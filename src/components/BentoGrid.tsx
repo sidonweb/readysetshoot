@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, Camera, Eye, Play, ArrowRight, Star, Sun, Moon } from 'lucide-react';
+import { Zap, ArrowRight,  } from 'lucide-react';
 
 const BentoGrid: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
