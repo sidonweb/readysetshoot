@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+h1, h2, .unbounded {
+  font-family: 'Unbounded', cursive, sans-serif;
+}
+h3, h4, h5, h6, .syne {
+  font-family: 'Syne', cursive, sans-serif;
+}
+
+body {
+  font-family: 'Hepta Slab', serif, sans-serif;
+}
