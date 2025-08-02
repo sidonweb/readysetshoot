@@ -13,7 +13,7 @@ const WhyUs: React.FC = () => {
                         muted
                         playsInline
                     >
-                        <source src="/src/assets/Metallic.mp4" type="video/mp4" />
+                        <source src="/Metallic.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </div>

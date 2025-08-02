@@ -1,4 +1,3 @@
-import herovideo from '../assets/Hero.mp4'
 import iphone from '../assets/iPhone Mockup.png'
 import Navbar from './ui/Navbar'
 
@@ -14,7 +13,7 @@ const Hero = () => {
                     loop
                     muted
                 >
-                    <source src={herovideo} type="video/mp4" />
+                    <source src="Hero.mp4" type="video/mp4" />
                 </video>
 
                 <div className='z-10 flex flex-col items-center md:items-start justify-center h-full text-center text-white px-4 gap-4'>
