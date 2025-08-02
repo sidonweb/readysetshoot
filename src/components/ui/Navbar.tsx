@@ -7,12 +7,12 @@ const Navbar = () => {
   const navItems = ["Features", "Why Us", "Testimonials", "FAQs", "Get App"];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xs text-white px-6 py-6">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="sticky top-0 z-50 backdrop-blur-xs bg-black/25 text-white px-6 py-8">
+      <div className="max-w-10/12 mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold">readysetshoot</h1>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex space-x-6 text-sm font-medium">
+        <ul className="hidden md:flex space-x-6 text-sm font-light">
           {navItems.map((item) => (
             <li key={item} className="cursor-pointer hover:text-indigo-300 transition-all duration-200">
               <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>

@@ -77,7 +77,7 @@ const Toggles: React.FC = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="flex flex-row gap-12 items-center justify-between w-full max-w-6xl">
+                    <div className="flex flex-col md:flex-row gap-12 items-center justify-between w-full max-w-6xl">
                         {/* Feature List */}
                         <div className="space-y-6 mt-12">
                             {currentContent.items.map((item, index) => (

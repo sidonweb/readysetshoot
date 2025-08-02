@@ -12,3 +12,12 @@ h3, h4, h5, h6, .syne {
 body {
   font-family: 'Hepta Slab', serif, sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+::selection {
+  color: black;
+  background: greenyellow;
+}
