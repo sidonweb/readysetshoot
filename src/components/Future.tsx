@@ -45,8 +45,8 @@ const Future: React.FC = () => {
                         <span className="text-orange-500">Is In Your Hands</span>
                     </h1>
                     <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">
-                        We're building more than just a photography tool. We're building it with the people who use it. Every upcoming feature you see here has 
-                        been inspired by real feedback, early users, and conversations with our community. What we build next depends on what you tell us 
+                        We're building more than just a photography tool. We're building it with the people who use it. Every upcoming feature you see here has
+                        been inspired by real feedback, early users, and conversations with our community. What we build next depends on what you tell us
                         matters most.
                     </p>
                 </div>
@@ -59,7 +59,7 @@ const Future: React.FC = () => {
                             <div className="flex-shrink-0 text-gray-400 mt-1">
                                 {feature.icon}
                             </div>
-                            
+
                             {/* Content */}
                             <div className="flex-1">
                                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, ArrowRight,  } from 'lucide-react';
+import { Zap, ArrowRight, } from 'lucide-react';
 
 const BentoGrid: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -9,9 +9,9 @@ const BentoGrid: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Grid Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 h-auto lg:h-[600px]">
-          
+
           {/* Main Brand Card */}
-          <div 
+          <div
             className="lg:col-span-5 md:col-span-1 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 md:p-8 flex flex-col justify-center relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
             onMouseEnter={() => setHoveredCard('brand')}
             onMouseLeave={() => setHoveredCard(null)}
@@ -29,7 +29,7 @@ const BentoGrid: React.FC = () => {
           </div>
 
           {/* Forecast Card */}
-          <div 
+          <div
             className="lg:col-span-4 md:col-span-1 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
             onMouseEnter={() => setHoveredCard('forecast')}
             onMouseLeave={() => setHoveredCard(null)}
@@ -37,10 +37,10 @@ const BentoGrid: React.FC = () => {
             <div>
               <div className="text-sm text-orange-100 mb-2 font-medium">Sunrise</div>
               <h3 className="text-2xl md:text-3xl font-bold mb-8 leading-tight">
-                Forecast<br/>
-                every<br/>
-                moment<br/>
-                that<br/>
+                Forecast<br />
+                every<br />
+                moment<br />
+                that<br />
                 matters
               </h3>
             </div>
@@ -59,7 +59,7 @@ const BentoGrid: React.FC = () => {
           </div>
 
           {/* Device Showcase */}
-          <div 
+          <div
             className="lg:col-span-3 md:col-span-2 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
             onMouseEnter={() => setHoveredCard('device')}
             onMouseLeave={() => setHoveredCard(null)}
@@ -91,16 +91,16 @@ const BentoGrid: React.FC = () => {
           </div>
 
           {/* Analytics Card */}
-          <div 
+          <div
             className="lg:col-span-7 md:col-span-1 bg-gradient-to-br from-gray-900 to-black rounded-2xl p-6 md:p-8 flex items-center justify-between relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
             onMouseEnter={() => setHoveredCard('analytics')}
             onMouseLeave={() => setHoveredCard(null)}
           >
             <div className="flex-1">
               <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-                Light waits for<br/>
-                nobody. We<br/>
-                make sure<br/>
+                Light waits for<br />
+                nobody. We<br />
+                make sure<br />
                 you're ready.
               </h3>
             </div>
@@ -142,7 +142,7 @@ const BentoGrid: React.FC = () => {
           </div>
 
           {/* CTA Card */}
-          <div 
+          <div
             className="lg:col-span-5 md:col-span-1 bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
             onMouseEnter={() => setHoveredCard('cta')}
             onMouseLeave={() => setHoveredCard(null)}
@@ -158,7 +158,7 @@ const BentoGrid: React.FC = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">Built for<br/>Real World<br/>Conditions.</h3>
+              <h3 className="text-xl font-bold mb-2">Built for<br />Real World<br />Conditions.</h3>
             </div>
             <div className="mt-auto">
               <button className="w-full bg-white/20 hover:bg-white/30 rounded-xl py-3 px-4 flex items-center justify-center space-x-2 transition-all duration-300 group">

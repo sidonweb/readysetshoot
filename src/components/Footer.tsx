@@ -12,16 +12,16 @@ const Footer = () => {
                         <p className="text-gray-400 text-sm">
                             ©{currentYear} ReadySetShoot. All Rights Reserved.
                         </p>
-                        
+
                         <div className="flex items-center gap-6">
-                            <a 
-                                href="/terms" 
+                            <a
+                                href="/terms"
                                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm underline hover:no-underline"
                             >
                                 Terms & Conditions
                             </a>
-                            <a 
-                                href="/privacy" 
+                            <a
+                                href="/privacy"
                                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm underline hover:no-underline"
                             >
                                 Privacy Policy
@@ -31,27 +31,27 @@ const Footer = () => {
 
                     {/* Right side - Social Media Icons */}
                     <div className="flex items-center gap-4">
-                        <a 
-                            href="https://instagram.com/readysetshoot" 
-                            target="_blank" 
+                        <a
+                            href="https://instagram.com/readysetshoot"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-white transition-colors duration-200"
                             aria-label="Instagram"
                         >
                             <Instagram className="w-5 h-5" />
                         </a>
-                        <a 
-                            href="https://twitter.com/readysetshoot" 
-                            target="_blank" 
+                        <a
+                            href="https://twitter.com/readysetshoot"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-white transition-colors duration-200"
                             aria-label="Twitter"
                         >
                             <Twitter className="w-5 h-5" />
                         </a>
-                        <a 
-                            href="https://youtube.com/readysetshoot" 
-                            target="_blank" 
+                        <a
+                            href="https://youtube.com/readysetshoot"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-gray-400 hover:text-white transition-colors duration-200"
                             aria-label="YouTube"
