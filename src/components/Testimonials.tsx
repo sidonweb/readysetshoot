@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, StarIcon } from 'lucide-react';
+import { Star } from 'lucide-react';
 import AnimatedCount from './ui/AnimateCount';
 
 interface Testimonial {
