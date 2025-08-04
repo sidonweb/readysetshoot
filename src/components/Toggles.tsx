@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { Sun, Moon, Star, Eye, Heart } from 'lucide-react';
 
 type FeatureMode = 'sunrise' | 'sunset' | 'astro';
 
 interface FeatureContent {
     title: string;
     items: string[];
-    icon: React.ReactNode;
-    gradient: string;
-    bgColor: string;
+    image: string;
 }
 
 const Toggles: React.FC = () => {
@@ -24,9 +21,7 @@ const Toggles: React.FC = () => {
                 'Wave Height & Interval For Coastal Conditions',
                 'Observation Timeline'
             ],
-            icon: <Sun className="w-6 h-6" />,
-            gradient: 'from-orange-400 via-pink-400 to-purple-500',
-            bgColor: 'bg-gradient-to-br from-orange-900/20 via-pink-900/20 to-purple-900/20'
+            image: "./Sunrise.png"
         },
         sunset: {
             title: 'Sunset',
@@ -37,9 +32,7 @@ const Toggles: React.FC = () => {
                 'Wind Patterns & Atmospheric Clarity',
                 'Photography Timeline & Best Viewing Times'
             ],
-            icon: <Moon className="w-6 h-6" />,
-            gradient: 'from-amber-400 via-orange-400 to-red-500',
-            bgColor: 'bg-gradient-to-br from-amber-900/20 via-orange-900/20 to-red-900/20'
+            image: "./Sunset.png"
         },
         astro: {
             title: 'Astro',
@@ -50,9 +43,7 @@ const Toggles: React.FC = () => {
                 'Light Pollution & Darkness Quality',
                 'Meteor Shower & Celestial Event Calendar'
             ],
-            icon: <Star className="w-6 h-6" />,
-            gradient: 'from-indigo-400 via-purple-400 to-pink-400',
-            bgColor: 'bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20'
+            image: "./Astro.png"
         }
     };
 
@@ -98,62 +89,11 @@ const Toggles: React.FC = () => {
                         </div>
                         {/* Right Panel */}
                         <div className="flex-1 max-w-md">
-                            <div
-                                className={`relative rounded-3xl p-8 transition-all duration-1000 ${currentContent.bgColor} backdrop-blur-sm border border-white/10`}
-                            >
-                                {/* Gradient Background Effect */}
-                                <div
-                                    className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${currentContent.gradient} opacity-10 transition-all duration-1000`}
-                                ></div>
-
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    {/* Header */}
-                                    <div className="flex items-center justify-between mb-8">
-                                        <div className="flex items-center space-x-3">
-                                            <div className={`p-3 rounded-full bg-gradient-to-r ${currentContent.gradient} opacity-80`}>
-                                                {currentContent.icon}
-                                            </div>
-                                            <h3 className="text-xl font-medium">{currentContent.title}</h3>
-                                        </div>
-                                        <button className="text-gray-400 hover:text-white transition-colors">
-                                            <Eye className="w-5 h-5" />
-                                        </button>
-                                    </div>
-
-                                    {/* Timeline Button */}
-                                    <button className="w-full flex items-center justify-between p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 mb-6 group">
-                                        <span className="text-gray-300 group-hover:text-white transition-colors">
-                                            View Observation Timeline
-                                        </span>
-                                        <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center group-hover:border-white transition-colors">
-                                            <div className="w-2 h-2 bg-gray-400 rounded-full group-hover:bg-white transition-colors"></div>
-                                        </div>
-                                    </button>
-
-                                    {/* Bottom Icons */}
-                                    <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                                        <div className="flex space-x-6">
-                                            <div className="flex flex-col items-center space-y-2">
-                                                {currentContent.icon}
-                                                <span className="text-xs text-gray-400">{currentContent.title}</span>
-                                            </div>
-                                            <div className="flex flex-col items-center space-y-2">
-                                                <Moon className="w-6 h-6 text-gray-500" />
-                                                <span className="text-xs text-gray-500">Sunset</span>
-                                            </div>
-                                            <div className="flex flex-col items-center space-y-2">
-                                                <Star className="w-6 h-6 text-gray-500" />
-                                                <span className="text-xs text-gray-500">Astro</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col items-center space-y-2">
-                                            <Heart className="w-6 h-6 text-gray-500 hover:text-red-400 transition-colors cursor-pointer" />
-                                            <span className="text-xs text-gray-500">Saved</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            {/* Content */}
+                            <div className="relative z-10">
+                                <img src={currentContent.image} alt={currentContent.title} className="w-full h-auto rounded-2xl" />
                             </div>
+
                         </div>
                     </div>
                 </div>
