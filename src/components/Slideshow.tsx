@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause, Maximize2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Slideshow = () => {
   // Sample high-quality photography images - replace with your actual images
@@ -23,21 +23,18 @@ const Slideshow = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(true);
   const [showControls, setShowControls] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isPlaying) return;
-    
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval);
-  }, [isPlaying, images.length]);
+  }, [images.length]);
 
   // Hide controls after 3 seconds of inactivity
   useEffect(() => {
@@ -56,25 +53,6 @@ const Slideshow = () => {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
     setImageLoaded(false);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-    setImageLoaded(false);
-  };
-
-  const togglePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullscreen(false);
-    }
   };
 
   const handleMouseMove = () => {
