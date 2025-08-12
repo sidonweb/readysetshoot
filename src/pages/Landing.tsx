@@ -7,6 +7,7 @@ import Toggles from "../components/Toggles";
 import WhyUs from "../components/WhyUs";
 import Slideshow from "../components/Slideshow";
 import Testimonials from "../components/Testimonials";
+import FAQ from "../components/FAQ";
 
 const Landing = () => {
   return (
@@ -19,6 +20,7 @@ const Landing = () => {
       <BentoGrid />
       <Slideshow />
       <Testimonials />
+      <FAQ />
       <Footer />
 
     </>
