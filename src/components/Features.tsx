@@ -123,7 +123,7 @@ const Features = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6">
+          <h2 className="text-4xl font-light mb-6">
             Every <span className="text-orange-500">Great Shot</span> Starts Here
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
