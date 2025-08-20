@@ -8,6 +8,7 @@ import WhyUs from "../components/WhyUs";
 import Slideshow from "../components/Slideshow";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
+import CTA from "../components/CTA";
 
 const Landing = () => {
   return (
@@ -21,6 +22,7 @@ const Landing = () => {
       <Slideshow />
       <Testimonials />
       <FAQ />
+      <CTA />
       <Footer />
 
     </>
