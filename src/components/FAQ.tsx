@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import iphone from "../../public/iPhone FAQ.png"
+// import iphone from "../../public/iPhone FAQ.png"
 
 const FAQ = () => {
     const [openItems, setOpenItems] = useState(new Set());
