@@ -23,11 +23,17 @@ const Navbar = () => {
         </h1>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex space-x-6 text-sm font-light">
+        <ul className="hidden md:flex justify-center items-center space-x-6 text-sm font-light">
           {navItems.map((item) => (
-            <li key={item} className="cursor-pointer hover:text-indigo-300 transition-all duration-200">
-              <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
-            </li>
+            item === "Get App" ? (
+              <li key={item} className="cursor-pointer bg-[#5A00FF] rounded-full text-white transition-all duration-200 px-4 py-2">
+                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
+              </li>
+            ) : (
+              <li key={item} className="cursor-pointer hover:text-indigo-300 transition-all duration-200">
+                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
+              </li>
+            )
           ))}
         </ul>
 

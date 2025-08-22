@@ -5,7 +5,7 @@ const BentoGrid: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-8">
+    <div className="min-h-screen bg-black text-white px-4 md:px-8 py-8 md:py-32">
       <div className="max-w-7xl mx-auto">
         {/* Grid Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 h-auto lg:h-[600px]">

@@ -81,7 +81,7 @@
 
 const Future = () => {
   return (
-    <section className="bg-[#0E0F11] text-white py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#0E0F11] text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-20">

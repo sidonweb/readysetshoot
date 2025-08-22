@@ -88,11 +88,11 @@ const Testimonials: React.FC = () => {
     );
 
     return (
-        <section className="bg-[#0E0F11] py-32 px-4 overflow-hidden">
+        <section className="bg-[#0E0F11] py-8 md:py-32 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl text-white mb-4 unbounded">
+                    <h2 className="text-4xl  text-white mb-4 unbounded">
                         Why <span className="text-orange-500">They Keep Using</span> ReadySetShoot
                     </h2>
                     <p className="text-gray-400 text-base max-w-2xl mx-auto">

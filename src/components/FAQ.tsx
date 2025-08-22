@@ -50,14 +50,14 @@ const FAQ = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white px-4 md:px-24 py-16">
+        <div className="min-h-screen bg-black text-white px-4 py-8 md:py-32">
 
             <div className="flex flex-col md:flex-row items-start justify-center">
                 {/* Left Side - FAQ */}
-                <div className="w-full md:w-1/2">
+                <div className="w-full px-16 md:px-24">
                     <div className="mb-12">
                         <p className="text-gray-400 text-sm font-medium mb-3">FAQs</p>
-                        <h1 className="text-4xl font-bold leading-tight">
+                        <h1 className="text-4xl font-light leading-tight">
                             Questions → <span className="text-orange-500">Answers</span>
                         </h1>
                     </div>
@@ -67,7 +67,7 @@ const FAQ = () => {
                             <div key={item.id} className={`border-b border-gray-800 ${openItems.has(item.id) ? 'bg-[#222222] rounded-lg' : ''}`}>
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-6 px-6 flex items-center justify-between text-left transition-colors duration-200 group ${openItems.has(item.id) ? 'bg-[#222222] rounded-t-lg' : ''}`}
+                                    className={`w-full py-6 flex items-center justify-between text-left transition-colors duration-200 group ${openItems.has(item.id) ? 'bg-[#222222] rounded-t-lg' : ''}`}
                                 >
                                     <span className="text-white text-lg font-medium pr-6 transition-colors duration-200">
                                         {item.question}
@@ -100,16 +100,13 @@ const FAQ = () => {
                 </div>
 
                 {/* Right Side - iPhone Mockup */}
-                <div className="hidden md:w-1/2 md:flex justify-center items-center">
-
-                    {/* iPhone Frame */}
+                {/* <div className="hidden md:w-1/2 md:flex justify-center items-center">
                     <img
                         src={iphone}
                         alt="iPhone displaying ReadySetShoot app"
                         className="w-1/3"
                     />
-
-                </div>
+                </div> */}
             </div>
 
         </div>

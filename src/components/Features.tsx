@@ -92,13 +92,13 @@ const Features = () => {
       description: "A purpose-built app for landscape, seascape, and astrophotographers. Go from guesswork to enriching apps - the moments that matter most for creating magic in one place."
     },
     {
-      number: "2", 
+      number: "2",
       title: "Quality-First Forecasts",
       description: "Know exactly what and where to shoot. Get color-quality forecasts for sunrise and sunset, plus moon phases, Milky Way core position and hourly cloud cover for astro."
     },
     {
       number: "3",
-      title: "Save Locations", 
+      title: "Save Locations",
       description: "Premium users can save their favourite sunrise, sunset, and astro locations, easily comparing real-time conditions to pick the perfect spot every time."
     },
     {
@@ -112,15 +112,15 @@ const Features = () => {
       description: "Designed to be quick, clean and intuitive - so when you're out shooting, everything you need is right at your fingertips exactly when you need it."
     },
     {
-      number: "6", 
+      number: "6",
       title: "Alerts That Matters",
       description: "Premium users get notified when conditions align for the perfect shot. Set personalised thresholds for sunrise, sunset, clear skies, and aurora with clutter-free alerts."
     }
   ];
 
   return (
-    <section className="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-black text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-4xl font-light mb-6">
@@ -134,23 +134,24 @@ const Features = () => {
         {/* Features List */}
         <div className="space-y-16">
           {features.map((feature, index) => (
-            <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-              {/* Number */}
-              <div className="md:col-span-1 flex justify-center md:justify-start">
-                <span className="text-orange-500 text-2xl font-light">
-                  {feature.number}
-                </span>
+            <div key={index} className="flex flex-row justify-between items-center">
+              <div className="flex flex-row items-center justify-between gap-10">
+                {/* Number */}
+                <div className="flex flex-row justify-between items-center gap-10">
+                  <span className="text-orange-500 text-2xl font-light">
+                    {feature.number}
+                  </span>
+                </div>
+                {/* Title */}
+                <div className="md:col-span-4 text-center md:text-left">
+                  <h3 className="text-xl font-normal text-white">
+                    {feature.title}
+                  </h3>
+                </div>
               </div>
-              
-              {/* Title */}
-              <div className="md:col-span-4 text-center md:text-left">
-                <h3 className="text-xl font-normal text-white">
-                  {feature.title}
-                </h3>
-              </div>
-              
+
               {/* Description */}
-              <div className="md:col-span-7 text-center md:text-left">
+              <div className="md:col-span-7 text-center md:text-left max-w-2xl">
                 <p className="text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
