@@ -2,7 +2,7 @@ import React from 'react';
 
 const WhyUs: React.FC = () => {
     return (
-        <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-8 md:py-32">
+        <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 md:px-8 lg:px-24 py-8 md:py-32">
             <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
                 {/* Left side - Video container */}
                 <div className="flex-shrink-0 relative w-80 h-80 md:w-96 md:h-96 ">
@@ -19,7 +19,7 @@ const WhyUs: React.FC = () => {
                 </div>
 
                 {/* Right side - Content */}
-                <div className="flex-1 max-w-3xl space-y-6 lg:space-y-12 text-center lg:text-left">
+                <div className="flex-1 max-w-3xl space-y-6 lg:space-y-12 text-left">
                     <h1 className="text-3xl md:text-4xl ">
                         <span className="text-orange-500">Why We Built</span>{' '}
                         <span className="text-white">ReadySetShoot</span>

@@ -84,7 +84,7 @@ const Future = () => {
     <section className="bg-[#0E0F11] text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="md:text-center mb-20">
           <h2 className="text-4xl font-light mb-6">
             The Future of ReadySetShoot{' '}
             <span className="text-orange-500">Is In Your Hands</span>

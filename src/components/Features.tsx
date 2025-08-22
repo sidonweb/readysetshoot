@@ -122,7 +122,7 @@ const Features = () => {
     <section className="bg-black text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="md:text-center mb-20">
           <h2 className="text-4xl font-light mb-6">
             Every <span className="text-orange-500">Great Shot</span> Starts Here
           </h2>
@@ -134,24 +134,24 @@ const Features = () => {
         {/* Features List */}
         <div className="space-y-16">
           {features.map((feature, index) => (
-            <div key={index} className="flex flex-row justify-between items-center">
-              <div className="flex flex-row items-center justify-between gap-10">
+            <div key={index} className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-5">
+              <div className="flex flex-row items-center justify-start md:justify-between gap-4 md:gap-10">
                 {/* Number */}
-                <div className="flex flex-row justify-between items-center gap-10">
-                  <span className="text-orange-500 text-2xl font-light">
+                <div className="flex flex-row items-start md:items-center justify-start md:justify-between gap-10">
+                  <span className="text-orange-500 text-2xl font-normal">
                     {feature.number}
                   </span>
                 </div>
                 {/* Title */}
                 <div className="md:col-span-4 text-center md:text-left">
-                  <h3 className="text-xl font-normal text-white">
+                  <h3 className="text-2xl font-normal text-white">
                     {feature.title}
                   </h3>
                 </div>
               </div>
 
               {/* Description */}
-              <div className="md:col-span-7 text-center md:text-left max-w-2xl">
+              <div className="md:col-span-7 text-start max-w-2xl">
                 <p className="text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>

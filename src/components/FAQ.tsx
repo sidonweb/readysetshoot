@@ -50,11 +50,10 @@ const FAQ = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white px-4 py-8 md:py-32">
-
+        <div className="min-h-screen bg-black text-white px-4 md:px-8 lg:px-24 py-8 md:py-32">
             <div className="flex flex-col md:flex-row items-start justify-center">
                 {/* Left Side - FAQ */}
-                <div className="w-full px-16 md:px-24">
+                <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
                         <p className="text-gray-400 text-sm font-medium mb-3">FAQs</p>
                         <h1 className="text-4xl font-light leading-tight">
@@ -67,7 +66,7 @@ const FAQ = () => {
                             <div key={item.id} className={`border-b border-gray-800 ${openItems.has(item.id) ? 'bg-[#222222] rounded-lg' : ''}`}>
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-6 flex items-center justify-between text-left transition-colors duration-200 group ${openItems.has(item.id) ? 'bg-[#222222] rounded-t-lg' : ''}`}
+                                    className={`w-full py-4 px-4 flex items-center justify-between text-left transition-colors duration-200 group ${openItems.has(item.id) ? 'bg-[#222222] rounded-t-lg' : ''}`}
                                 >
                                     <span className="text-white text-lg font-medium pr-6 transition-colors duration-200">
                                         {item.question}
@@ -90,7 +89,7 @@ const FAQ = () => {
                                     className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.has(item.id) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                                         }`}
                                 >
-                                    <div className="px-6 pb-6 pt-2 text-gray-300 leading-relaxed">
+                                    <div className="px-4 pb-4 pt-2 text-gray-300 leading-relaxed">
                                         {item.answer}
                                     </div>
                                 </div>

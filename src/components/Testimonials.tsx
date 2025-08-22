@@ -88,10 +88,10 @@ const Testimonials: React.FC = () => {
     );
 
     return (
-        <section className="bg-[#0E0F11] py-8 md:py-32 px-4 overflow-hidden">
+        <section className="bg-[#0E0F11] py-8 md:py-32 px-4 md:px-8 lg:px-24 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12">
+                <div className="md:text-center mb-12">
                     <h2 className="text-4xl  text-white mb-4 unbounded">
                         Why <span className="text-orange-500">They Keep Using</span> ReadySetShoot
                     </h2>
@@ -127,12 +127,12 @@ const Testimonials: React.FC = () => {
                 {/* Footer */}
                 <div className="text-center mt-12">
                     <div className="inline-flex items-center bg-[#0E0F11] rounded-md px-6 py-3 border border-[#1B1D1F]">
-                        <svg width="20" height="20" viewBox="0 0 28 28" fill="none" className='mr-3' xmlns="http://www.w3.org/2000/svg">
+                        <svg  viewBox="0 0 28 28" fill="none" className='mr-3 h-10 w-10 md:h-5 md:w-5' xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="28" rx="14" fill="#FF4500" />
                             <path d="M9.42326 20.4488L10.6277 15.3106L6.58826 11.8546L11.9247 11.3974L14 6.55176L16.0753 11.3974L21.4118 11.8546L17.3724 15.3106L18.5768 20.4488L14 17.7243L9.42326 20.4488Z" fill="white" />
                         </svg>
 
-                        <span className="text-gray-300 text-sm">
+                        <span className="text-gray-300 text-sm text-left md:text-center">
                             Trusted by Landscape & Astro Photographers in{" "}
                             <span
                                 className="text-orange-500 font-semibold tabular-nums"
