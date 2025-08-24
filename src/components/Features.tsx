@@ -123,10 +123,10 @@ const Features = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="md:text-center mb-20 md:mb-32">
-          <h2 className="text-4xl font-light mb-6">
-            Every <span className="text-orange-500">Great Shot</span> Starts Here
+          <h2 className="text-4xl mb-6">
+            Every <span className="text-[#FF6B2C]">Great Shot</span> Starts Here
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-[#CFCFCF] text-lg max-w-4xl mx-auto">
             Skip the hills and trial and feel focused app designed to back every shoot with real insight.
           </p>
         </div>
@@ -153,7 +153,7 @@ const Features = () => {
 
                 {/* Description */}
                 <div className="md:col-span-7 text-start max-w-2xl">
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-[#CFCFCF] leading-relaxed">
                     {feature.description}
                   </p>
                 </div>

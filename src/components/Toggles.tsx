@@ -52,7 +52,7 @@ const Toggles: React.FC = () => {
     return (
         <div className="bg-[#0E0F11] text-white px-4 md:px-8 lg:px-24 py-8 md:py-32">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col gap-16 items-center">
+                <div className="flex flex-col gap-16  items-center">
                     {/* Navigation Tabs */}
                     <div className="flex flex-row justify-evenly items-center w-full max-w-6xl">
                         {Object.entries(featureContent).map(([key, content]) => (
@@ -60,7 +60,7 @@ const Toggles: React.FC = () => {
                                 key={key}
                                 onClick={() => setActiveMode(key as FeatureMode)}
                                 className={`text-xl unbounded tracking-wide transition-all duration-500 pb-2 border-b-2 ${activeMode === key
-                                    ? 'text-white border-orange-500'
+                                    ? 'text-white border-[#FF6B2C]'
                                     : 'text-gray-400 border-transparent hover:text-gray-200'
                                     }`}
                             >
@@ -80,8 +80,8 @@ const Toggles: React.FC = () => {
                                         animationFillMode: 'forwards'
                                     }}
                                 >
-                                    <div className="w-2 h-2 rounded-full bg-gray-400 mt-3 flex-shrink-0 group-hover:bg-orange-400 transition-colors duration-300"></div>
-                                    <p className="text-lg text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                                    <div className="w-2 h-2 rounded-full bg-[#CFCFCF] mt-3 flex-shrink-0 "></div>
+                                    <p className="text-lg text-[#CFCFCF]">
                                         {item}
                                     </p>
                                 </div>

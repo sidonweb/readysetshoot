@@ -84,12 +84,12 @@ const Future = () => {
     <section className="bg-[#0E0F11] text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="md:text-center mb-20">
+        <div className="md:text-center mb-20 md:mb-32">
           <h2 className="text-4xl font-light mb-6">
             The Future of ReadySetShoot{' '}
-            <span className="text-orange-500">Is In Your Hands</span>
+            <span className="text-[#FF6B2C]">Is In Your Hands</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-[#CFCFCF] text-lg max-w-6xl mx-auto">
             We're building more than just a photography tool. What we build next depends on what you tell us matters most.
           </p>
         </div>
@@ -97,14 +97,13 @@ const Future = () => {
         {/* Features Grid */}
         <div className="space-y-14">
           {/* Row 1 - Left aligned */}
-          <div className="flex justify-start border-b border-[#222222] pb-8">
-            <div className="flex items-start space-x-6 max-w-lg">
+          <div className="flex justify-start  border-b border-[#222222] pb-14">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12  rounded-lg flex items-center justify-center">
                   <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.6117 0.75H12.6667C12.9982 0.75 13.3161 0.881696 13.5506 1.11612C13.785 1.35054 13.9167 1.66848 13.9167 2C13.9167 2.33152 13.785 2.64946 13.5506 2.88388C13.3161 3.1183 12.9982 3.25 12.6667 3.25C10.78 3.25 9.43833 3.25 8.39 3.33667C7.35667 3.42 6.715 3.58167 6.20667 3.84C5.18772 4.35927 4.35927 5.18772 3.84 6.20667C3.58167 6.715 3.42167 7.35667 3.33667 8.39C3.25167 9.44 3.25 10.78 3.25 12.6667C3.25 12.9982 3.1183 13.3161 2.88388 13.5506C2.64946 13.785 2.33152 13.9167 2 13.9167C1.66848 13.9167 1.35054 13.785 1.11612 13.5506C0.881696 13.3161 0.75 12.9982 0.75 12.6667V12.6117C0.75 10.7917 0.75 9.34833 0.845 8.18667C0.941667 6.99667 1.145 5.99167 1.61167 5.07333C2.37112 3.58331 3.58295 2.37207 5.07333 1.61333C5.99 1.145 6.99667 0.941667 8.18667 0.845C9.34833 0.75 10.7917 0.75 12.6117 0.75ZM25.6117 3.33667C24.5617 3.25167 23.22 3.25 21.3333 3.25C21.0018 3.25 20.6839 3.1183 20.4494 2.88388C20.215 2.64946 20.0833 2.33152 20.0833 2C20.0833 1.66848 20.215 1.35054 20.4494 1.11612C20.6839 0.881696 21.0018 0.75 21.3333 0.75H21.3883C23.2083 0.75 24.6517 0.75 25.8133 0.845C27.0033 0.941667 28.0083 1.145 28.9283 1.61167C30.4177 2.37141 31.6284 3.5832 32.3867 5.07333C32.855 5.99 33.0583 6.99667 33.155 8.18667C33.25 9.34833 33.25 10.7917 33.25 12.6117V12.6667C33.25 12.9982 33.1183 13.3161 32.8839 13.5506C32.6495 13.785 32.3315 13.9167 32 13.9167C31.6685 13.9167 31.3505 13.785 31.1161 13.5506C30.8817 13.3161 30.75 12.9982 30.75 12.6667C30.75 10.78 30.75 9.43833 30.6633 8.39C30.58 7.35667 30.4183 6.715 30.16 6.20667C29.6407 5.18772 28.8123 4.35927 27.7933 3.84C27.285 3.58167 26.645 3.42167 25.6117 3.33667ZM16.44 9.215C16.6134 9.12844 16.8045 9.08337 16.9983 9.08337C17.1921 9.08337 17.3833 9.12844 17.5567 9.215L24.2233 12.5483C24.4311 12.6521 24.6059 12.8117 24.7281 13.0092C24.8503 13.2067 24.915 13.4344 24.915 13.6667V20.3333C24.9147 20.5653 24.8498 20.7926 24.7277 20.9898C24.6055 21.1871 24.4309 21.3464 24.2233 21.45L17.5567 24.7833C17.3833 24.8699 17.1921 24.915 16.9983 24.915C16.8045 24.915 16.6134 24.8699 16.44 24.7833L9.77333 21.45C9.56609 21.3462 9.39181 21.1867 9.26996 20.9895C9.14811 20.7923 9.0835 20.5651 9.08333 20.3333V13.6667C9.08365 13.4347 9.14852 13.2074 9.27067 13.0102C9.39282 12.8129 9.56745 12.6536 9.775 12.55L16.44 9.215ZM2 20.0833C2.33152 20.0833 2.64946 20.215 2.88388 20.4494C3.1183 20.6839 3.25 21.0018 3.25 21.3333C3.25 23.2217 3.25 24.5617 3.33667 25.61C3.42 26.6433 3.58167 27.285 3.84 27.7933C4.35927 28.8123 5.18772 29.6407 6.20667 30.16C6.715 30.4183 7.35667 30.5783 8.39 30.6633C9.44 30.7483 10.78 30.75 12.6667 30.75C12.9982 30.75 13.3161 30.8817 13.5506 31.1161C13.785 31.3505 13.9167 31.6685 13.9167 32C13.9167 32.3315 13.785 32.6495 13.5506 32.8839C13.3161 33.1183 12.9982 33.25 12.6667 33.25H12.6117C10.7917 33.25 9.34833 33.25 8.18667 33.155C6.99667 33.0583 5.99167 32.855 5.07333 32.3883C3.58356 31.6293 2.37236 30.4181 1.61333 28.9283C1.145 28.0083 0.941667 27.0033 0.845 25.8133C0.75 24.6517 0.75 23.2083 0.75 21.3883V21.3333C0.75 21.0018 0.881696 20.6839 1.11612 20.4494C1.35054 20.215 1.66848 20.0833 2 20.0833ZM32 20.0833C32.3315 20.0833 32.6495 20.215 32.8839 20.4494C33.1183 20.6839 33.25 21.0018 33.25 21.3333V21.3883C33.25 23.2083 33.25 24.6517 33.155 25.8133C33.0583 27.0033 32.855 28.0083 32.3883 28.9283C31.629 30.4175 30.4178 31.6281 28.9283 32.3867C28.0083 32.855 27.0033 33.0583 25.8133 33.155C24.6517 33.25 23.2083 33.25 21.3883 33.25H21.3333C21.0018 33.25 20.6839 33.1183 20.4494 32.8839C20.215 32.6495 20.0833 32.3315 20.0833 32C20.0833 31.6685 20.215 31.3505 20.4494 31.1161C20.6839 30.8817 21.0018 30.75 21.3333 30.75C23.2217 30.75 24.5617 30.75 25.61 30.6633C26.6433 30.58 27.285 30.4183 27.7933 30.16C28.8123 29.6407 29.6407 28.8123 30.16 27.7933C30.4183 27.285 30.5783 26.6433 30.6633 25.61C30.7483 24.56 30.75 23.22 30.75 21.3333C30.75 21.0018 30.8817 20.6839 31.1161 20.4494C31.3505 20.215 31.6685 20.0833 32 20.0833Z" fill="#FF6B2C" />
                   </svg>
-
                 </div>
               </div>
               <div>
@@ -117,8 +116,8 @@ const Future = () => {
           </div>
 
           {/* Row 2 - Right aligned */}
-          <div className="flex justify-end border-b border-[#222222] pb-8">
-            <div className="flex items-start space-x-6 max-w-lg">
+          <div className="flex justify-end border-b border-[#222222] pb-14">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                   <svg width="36" height="34" viewBox="0 0 36 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,8 +136,8 @@ const Future = () => {
           </div>
 
           {/* Row 3 - Left aligned */}
-          <div className="flex justify-start border-b border-[#222222] pb-8">
-            <div className="flex items-start space-x-6 max-w-lg">
+          <div className="flex justify-start border-b border-[#222222] pb-14">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                   <svg width="36" height="30" viewBox="0 0 36 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -157,8 +156,8 @@ const Future = () => {
           </div>
 
           {/* Row 4 - Right aligned */}
-          <div className="flex justify-end border-b border-[#222222] pb-8">
-            <div className="flex items-start space-x-6 max-w-lg">
+          <div className="flex justify-end border-b border-[#222222] pb-14">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                   <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,8 +176,8 @@ const Future = () => {
           </div>
 
           {/* Row 5 - Left aligned */}
-          <div className="flex justify-start border-b border-[#222222] pb-8">
-            <div className="flex items-start space-x-6 max-w-lg">
+          <div className="flex justify-start border-b border-[#222222] pb-14">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +197,7 @@ const Future = () => {
 
           {/* Row 6 - Right aligned */}
           <div className="flex justify-end">
-            <div className="flex items-start space-x-6 max-w-lg">
+            <div className="flex items-center space-x-6 max-w-lg">
               <div className="flex-shrink-0">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                   <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">

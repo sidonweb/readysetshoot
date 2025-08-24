@@ -26,7 +26,7 @@ const Navbar = () => {
         <ul className="hidden md:flex justify-center items-center space-x-6 text-sm font-light">
           {navItems.map((item) => (
             item === "Get App" ? (
-              <li key={item} className="cursor-pointer bg-[#5A00FF] rounded-full text-[#F1F1F1] hover:text-white transition-all duration-300 px-4 py-2">
+              <li key={item} className="cursor-pointer bg-[#5A00FF] hover:bg-[#3E00AF] rounded-full text-[#F1F1F1] hover:text-white transition-all duration-300 px-4 py-2">
                 <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
               </li>
             ) : (
