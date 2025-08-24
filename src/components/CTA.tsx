@@ -1,7 +1,7 @@
 const CTA = () => {
     return (
         <section className="bg-black text-white py-8 md:py-32 flex items-center">
-            <div className="max-w-7xl bg-gradient-to-r from-[#0E0F11] to-black  mx-auto pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
+            <div className="max-w-7xl bg-[#0E0F11]  mx-auto pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     {/* Left Content */}
                     <div className="space-y-8 px-3">

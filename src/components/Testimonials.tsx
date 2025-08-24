@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-import AnimatedCount from './ui/AnimateCount';
+import AnimateCount from './ui/AnimateCount';
 
 interface Testimonial {
     id: number;
@@ -11,6 +11,8 @@ interface Testimonial {
 }
 
 const Testimonials: React.FC = () => {
+    const [isPaused, setIsPaused] = useState(false);
+
     const testimonials: Testimonial[] = [
         {
             id: 1,
@@ -56,8 +58,8 @@ const Testimonials: React.FC = () => {
         }
     ];
 
-    // Duplicate testimonials for seamless infinite scroll
-    const duplicatedTestimonials = [...testimonials, ...testimonials];
+    // Triple the testimonials for seamless infinite scroll
+    const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, index) => (
@@ -72,11 +74,15 @@ const Testimonials: React.FC = () => {
     };
 
     const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-        <div className="flex-shrink-0 w-80 bg-[#0E0F11] rounded-2xl p-6 mx-4 border border-[#1B1D1F]">
+        <div 
+            className="flex flex-col justify-between w-80 bg-[#0E0F11] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-orange-500/30"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+        >
             <div className="flex items-center mb-4">
                 {renderStars(testimonial.rating)}
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 min-h-[4.5rem]">
+            <p className="text-gray-300 text-normal leading-relaxed mb-6 min-h-[4.5rem]">
                 {testimonial.text}
             </p>
             <div className="text-right">
@@ -87,12 +93,13 @@ const Testimonials: React.FC = () => {
         </div>
     );
 
+
     return (
         <section className="bg-[#0E0F11] py-8 md:py-32 px-4 md:px-8 lg:px-24 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="md:text-center mb-12">
-                    <h2 className="text-4xl  text-white mb-4 unbounded">
+                <div className="md:text-center mb-20 md:mb-32">
+                    <h2 className="text-4xl text-white mb-4 unbounded">
                         Why <span className="text-orange-500">They Keep Using</span> ReadySetShoot
                     </h2>
                     <p className="text-gray-400 text-base max-w-2xl mx-auto">
@@ -108,15 +115,12 @@ const Testimonials: React.FC = () => {
 
                     {/* Scrolling container */}
                     <div className="overflow-hidden">
-                        <div
-                            className="flex animate-scroll hover:animate-scroll-slow"
-                            style={{
-                                width: `${duplicatedTestimonials.length * 320}px`
-                            }}
+                        <div 
+                            className={`flex testimonial-scroll ${isPaused ? 'paused' : ''}`}
                         >
-                            {duplicatedTestimonials.map((testimonial, index) => (
+                            {tripleTestimonials.map((testimonial, index) => (
                                 <TestimonialCard
-                                    key={`${testimonial.id}-${index}`}
+                                    key={`${testimonial.id}-${Math.floor(index / testimonials.length)}-${index % testimonials.length}`}
                                     testimonial={testimonial}
                                 />
                             ))}
@@ -127,7 +131,7 @@ const Testimonials: React.FC = () => {
                 {/* Footer */}
                 <div className="text-center mt-12">
                     <div className="inline-flex items-center bg-[#0E0F11] rounded-md px-6 py-3 border border-[#1B1D1F]">
-                        <svg  viewBox="0 0 28 28" fill="none" className='mr-3 h-10 w-10 md:h-5 md:w-5' xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 28 28" fill="none" className='mr-3 h-10 w-10 md:h-5 md:w-5' xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="28" rx="14" fill="#FF4500" />
                             <path d="M9.42326 20.4488L10.6277 15.3106L6.58826 11.8546L11.9247 11.3974L14 6.55176L16.0753 11.3974L21.4118 11.8546L17.3724 15.3106L18.5768 20.4488L14 17.7243L9.42326 20.4488Z" fill="white" />
                         </svg>
@@ -135,51 +139,59 @@ const Testimonials: React.FC = () => {
                         <span className="text-gray-300 text-sm text-left md:text-center">
                             Trusted by Landscape & Astro Photographers in{" "}
                             <span
-                                className="text-orange-500 font-semibold tabular-nums"
+                                className="text-orange-500 tabular-nums"
                                 style={{ minWidth: "3ch", display: "inline-block" }}
                             >
-                                <AnimatedCount
+                                <AnimateCount
                                     from={0}
                                     to={24}
-                                    separator=","
+                                    separator=""
                                     direction="up"
                                     duration={1}
-                                    className="count-up-text" />
-                                    {"+ "}Countries
+                                    className="count-up-text"
+                                />
+                                + Countries
                             </span>
-                            
                         </span>
                     </div>
                 </div>
             </div>
 
             <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-${testimonials.length * 320}px);
-          }
-        }
+                @keyframes testimonialScroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(-${testimonials.length * 336}px);
+                    }
+                }
 
-        @keyframes scroll-slow {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-${testimonials.length * 320}px);
-          }
-        }
+                .testimonial-scroll {
+                    animation: testimonialScroll 45s linear infinite;
+                    width: ${tripleTestimonials.length * 336}px;
+                }
 
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
+                .testimonial-scroll.paused {
+                    animation-play-state: paused;
+                }
 
-        .animate-scroll-slow {
-          animation: scroll-slow 120s linear infinite;
-        }
-      `}</style>
+                .testimonial-scroll:hover {
+                    animation-play-state: paused;
+                }
+
+                /* Smooth performance optimizations */
+                .testimonial-scroll {
+                    will-change: transform;
+                    backface-visibility: hidden;
+                    perspective: 1000px;
+                }
+
+                /* Ensure seamless loop by making sure we have exact positioning */
+                .testimonial-scroll > div:nth-child(${testimonials.length + 1}) {
+                    animation-delay: 0s;
+                }
+            `}</style>
         </section>
     );
 };

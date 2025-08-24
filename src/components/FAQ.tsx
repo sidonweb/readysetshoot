@@ -1,8 +1,7 @@
 import { useState } from 'react';
-// import iphone from "../../public/iPhone FAQ.png"
 
 const FAQ = () => {
-    const [openItems, setOpenItems] = useState(new Set());
+    const [openItem, setOpenItem] = useState(null);
 
     const faqData = [
         {
@@ -38,15 +37,7 @@ const FAQ = () => {
     ];
 
     const toggleItem = (id: any) => {
-        setOpenItems(prev => {
-            const newSet = new Set(prev);
-            if (newSet.has(id)) {
-                newSet.delete(id);
-            } else {
-                newSet.add(id);
-            }
-            return newSet;
-        });
+        setOpenItem(prev => prev === id ? null : id);
     };
 
     return (
@@ -55,41 +46,62 @@ const FAQ = () => {
                 {/* Left Side - FAQ */}
                 <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
-                        <p className="text-gray-400 text-sm font-medium mb-3">FAQs</p>
-                        <h1 className="text-4xl font-light leading-tight">
+                        <p className="text-gray-400 text-sm mb-3">FAQs</p>
+                        <h1 className="text-4xl leading-tight">
                             Questions → <span className="text-orange-500">Answers</span>
                         </h1>
                     </div>
 
                     <div className="space-y-2">
                         {faqData.map((item) => (
-                            <div key={item.id} className={`border-b border-gray-800 ${openItems.has(item.id) ? 'bg-[#222222] rounded-lg' : ''}`}>
+                            <div 
+                                key={item.id} 
+                                className={`transition-all duration-300 ease-in-out ${
+                                    openItem === item.id 
+                                        ? 'bg-[#222222] rounded-lg border-b border-transparent' 
+                                        : 'border-b border-gray-800 rounded-lg'
+                                }`}
+                            >
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-4 px-4 flex items-center justify-between text-left transition-colors duration-200 group ${openItems.has(item.id) ? 'bg-[#222222] rounded-t-lg' : ''}`}
+                                    className={`w-full py-4 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${
+                                        openItem === item.id 
+                                            ? 'bg-[#222222] px-4 rounded-lg' 
+                                            : 'cursor-pointer'
+                                    }`}
                                 >
-                                    <span className="text-white text-lg font-medium pr-6 transition-colors duration-200">
+                                    <span className={`text-lg transition-colors duration-300 ease-in-out ${
+                                        openItem === item.id 
+                                            ? 'text-[#999FA5]' 
+                                            : 'text-[#F5F5F5]'
+                                    }`}>
                                         {item.question}
                                     </span>
                                     <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
                                         <div className="relative w-4 h-4">
                                             {/* Horizontal line - always visible */}
+                                            <div className="absolute top-1/2 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out" />
+                                            {/* Vertical line - rotates and fades when open */}
                                             <div
-                                                className="absolute top-1/2 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
-                                            />
-                                            {/* Vertical line - disappears when open (creating minus effect) */}
-                                            <div
-                                                className={`absolute top-1/2 left-1/2 w-0.5 h-4 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${openItems.has(item.id) ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-                                                    }`}
+                                                className={`absolute top-1/2 left-1/2 w-0.5 h-4 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out ${
+                                                    openItem === item.id 
+                                                        ? 'opacity-0 rotate-90 scale-0' 
+                                                        : 'opacity-100 rotate-0 scale-100'
+                                                }`}
                                             />
                                         </div>
                                     </div>
                                 </button>
+                                
+                                {/* Answer container with smooth height transition */}
                                 <div
-                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openItems.has(item.id) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                                        }`}
+                                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                                        openItem === item.id 
+                                            ? 'max-h-96 opacity-100' 
+                                            : 'max-h-0 opacity-0'
+                                    }`}
                                 >
-                                    <div className="px-4 pb-4 pt-2 text-gray-300 leading-relaxed">
+                                    <div className="px-4 pb-6 pt-2 text-gray-300 leading-relaxed">
                                         {item.answer}
                                     </div>
                                 </div>
@@ -97,17 +109,7 @@ const FAQ = () => {
                         ))}
                     </div>
                 </div>
-
-                {/* Right Side - iPhone Mockup */}
-                {/* <div className="hidden md:w-1/2 md:flex justify-center items-center">
-                    <img
-                        src={iphone}
-                        alt="iPhone displaying ReadySetShoot app"
-                        className="w-1/3"
-                    />
-                </div> */}
             </div>
-
         </div>
     );
 };

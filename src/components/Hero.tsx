@@ -78,7 +78,7 @@ const Hero = () => {
                             className="count-up-text" />+ Shots Planned and Counting...
                     </StarBorder>
                     
-                    <h1 className="text-4xl md:text-6xl mb-4 md:text-center md:leading-[1.15] font-[440]">
+                    <h1 className="text-4xl md:text-6xl mb-4 text-center md:leading-[1.15] font-[440]">
                         The Only App You Need <br /> To Plan The Perfect Shot.
                         {/* <span className="bg-gradient-to-r from-[#B800FF] via-[#FF6B00] to-[#FF2DCB] bg-clip-text text-transparent">
                            {" "} The Perfect Shot.

@@ -9,6 +9,7 @@ import Slideshow from "../components/Slideshow";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import CTA from "../components/CTA";
+// import Testing from "../components/Testing";
 
 const Landing = () => {
   return (
@@ -18,6 +19,8 @@ const Landing = () => {
       <Toggles />
       <WhyUs />
       <Future />
+      
+      {/* <Testing /> */}
       <BentoGrid />
       <Slideshow />
       <Testimonials />
