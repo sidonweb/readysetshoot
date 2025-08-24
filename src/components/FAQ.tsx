@@ -58,15 +58,15 @@ const FAQ = () => {
                                 key={item.id} 
                                 className={`transition-all duration-300 ease-in-out ${
                                     openItem === item.id 
-                                        ? 'bg-[#222222] rounded-lg border-b border-transparent' 
+                                        ? 'bg-[#0E0F11]  rounded-lg border-b border-transparent' 
                                         : 'border-b border-gray-800 rounded-lg'
                                 }`}
                             >
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-4 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${
+                                    className={`w-full py-6 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${
                                         openItem === item.id 
-                                            ? 'bg-[#222222] px-4 rounded-lg' 
+                                            ? 'bg-[#0E0F11]  px-4 rounded-lg' 
                                             : 'cursor-pointer'
                                     }`}
                                 >

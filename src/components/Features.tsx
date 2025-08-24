@@ -119,14 +119,14 @@ const Features = () => {
   ];
 
   return (
-    <section className="bg-black text-white py-8 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section className="bg-black text-white py-20 md:py-32 px-10">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="md:text-center mb-20 md:mb-32">
-          <h2 className="text-4xl mb-6">
+        <div className="text-center mb-24 md:mb-32">
+          <h2 className="text-3xl md:text-4xl mb-6">
             Every <span className="text-[#FF6B2C]">Great Shot</span> Starts Here
           </h2>
-          <p className="text-[#CFCFCF] text-lg max-w-4xl mx-auto">
+          <p className="hidden md:block text-[#CFCFCF] text-lg max-w-4xl mx-auto">
             Skip the hills and trial and feel focused app designed to back every shoot with real insight.
           </p>
         </div>
@@ -139,13 +139,13 @@ const Features = () => {
                 <div className="flex flex-row items-center justify-start md:justify-between gap-4 md:gap-10">
                   {/* Number */}
                   <div className="flex flex-row items-start md:items-center justify-start md:justify-between gap-10">
-                    <span className="text-orange-500 text-2xl font-normal">
-                      {feature.number}
+                    <span className="text-orange-500 text-2xl">
+                      <span>#</span>{feature.number}
                     </span>
                   </div>
                   {/* Title */}
                   <div className="md:col-span-4 text-center md:text-left">
-                    <h3 className="text-2xl font-normal text-white">
+                    <h3 className="text-2xl font-semibold text-white">
                       {feature.title}
                     </h3>
                   </div>

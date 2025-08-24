@@ -1,10 +1,10 @@
 const CTA = () => {
     return (
         <section className="bg-black text-white py-8 md:py-32 flex items-center">
-            <div className="max-w-7xl bg-[#0E0F11]  mx-auto pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="max-w-7xl bg-[#0E0F11] mx-4 md:mx-auto pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
+                <div className="flex flex-col-reverse md:flex-row justify-between gap-8 lg:gap-16 items-center">
                     {/* Left Content */}
-                    <div className="space-y-8 px-3">
+                    <div className="space-y-8 px-3 py-12 md:py-0">
                         <div className="space-y-2">
                             <h1 className="text-4xl leading-tight">
                                 <span className="text-orange-500">Built by</span>{' '}
@@ -17,11 +17,11 @@ const CTA = () => {
                         </div>
 
                         {/* Download Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-row gap-4">
                             {/* App Store Button */}
                             <a
                                 href="#"
-                                className="inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200"
+                                className="inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <div className="flex items-center space-x-3">
                                     <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -29,7 +29,7 @@ const CTA = () => {
                                     </svg>
                                     <div className="text-left space-y-1">
                                         <div className="text-xs leading-none">Download on the</div>
-                                        <div className="text-lg font-semibold leading-none">App Store</div>
+                                        <div className="md:text-lg font-semibold leading-none">App Store</div>
                                     </div>
                                 </div>
                             </a>
@@ -45,7 +45,7 @@ const CTA = () => {
                                     </svg>
                                     <div className="text-left space-y-1">
                                         <div className="text-xs leading-none">Get it on</div>
-                                        <div className="text-lg font-semibold leading-none">Google Play</div>
+                                        <div className="md:text-lg font-semibold leading-none">Google Play</div>
                                     </div>
                                 </div>
                             </a>
