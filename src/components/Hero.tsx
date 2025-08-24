@@ -3,6 +3,7 @@
 import Navbar from './ui/Navbar'
 import Particles from './ui/Particles'
 import AnimatedCount from './ui/AnimateCount';
+import StarBorder from './ui/StarBorder';
 
 const Hero = () => {
     return (
@@ -63,6 +64,14 @@ const Hero = () => {
                 </div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 md:px-0 gap-4">
+                    <StarBorder
+                        as="button"
+                        className=""
+                        color="cyan"
+                        speed="5s"
+                    >
+1000+ Shots Planned and Counting...
+                    </StarBorder>
                     <div className="bg-black border-2 border-[#4C4C4C] mb-4 px-4 py-2 rounded-full syne text-center">
                         <AnimatedCount
                             from={0}
@@ -82,17 +91,17 @@ const Hero = () => {
                         All the information you need beautifully organized in a clean, focused UI. Everything you need is finally in the right place.
                     </p>
                     <div className="flex flex-col md:flex-row gap-4 text-base w-full md:w-auto justify-center items-start md:items-center">
-                        
+
                         <button className="border-2 border-[#333333] group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-[#1A1A1A] py-1 pr-5 pl-14 font-medium text-neutral-50">
                             <div className="absolute left-[3px] inline-flex h-12 w-12 items-center justify-start rounded-full bg-[#5A00FF] transition-[width] group-hover:w-[calc(100%-6px)]">
                                 <div className="ml-[11px] flex items-center justify-center">
                                     <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                                </svg>
+                                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                                    </svg>
                                 </div>
                             </div>
                             <span className="z-10 pl-1">
-                                Download for iOS ‎ ‎ ‎ ‎ 
+                                Download for iOS
                             </span>
                         </button>
                         <button className="border-2 border-[#333333] group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-[#1A1A1A] py-1 pr-5 pl-14 font-medium text-neutral-50">
