@@ -7,7 +7,7 @@ const Navbar = () => {
   const navItems = ["Features", "Why Us", "Testimonials", "FAQs", "Get App"];
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xs bg-black/25 text-white px-6 py-8">
+    <nav className="sticky top-0 z-50 backdrop-blur-xs bg-black/40 text-white px-6 py-8">
       <div className="max-w-10/12 mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold syne"> <span className="flex flex-row gap-3 justify-center items-center">
           <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,11 +26,11 @@ const Navbar = () => {
         <ul className="hidden md:flex justify-center items-center space-x-6 text-sm font-light">
           {navItems.map((item) => (
             item === "Get App" ? (
-              <li key={item} className="cursor-pointer bg-[#5A00FF] rounded-full text-white transition-all duration-200 px-4 py-2">
+              <li key={item} className="cursor-pointer bg-[#5A00FF] rounded-full text-[#F1F1F1] hover:text-white transition-all duration-300 px-4 py-2">
                 <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
               </li>
             ) : (
-              <li key={item} className="cursor-pointer hover:text-indigo-300 transition-all duration-200">
+              <li key={item} className="cursor-pointer text-[#CACACA] hover:text-white transition-all duration-300">
                 <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
               </li>
             )

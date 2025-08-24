@@ -63,31 +63,28 @@ const Hero = () => {
                     />
                 </div>
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 md:px-0 gap-4">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 md:px-0 gap-4 syne  mb-4">
                     <StarBorder
-                        as="button"
                         className=""
-                        color="cyan"
+                        color="#5A00FF"
                         speed="5s"
                     >
-1000+ Shots Planned and Counting...
-                    </StarBorder>
-                    <div className="bg-black border-2 border-[#4C4C4C] mb-4 px-4 py-2 rounded-full syne text-center">
-                        <AnimatedCount
+                         <AnimatedCount
                             from={0}
                             to={1000}
                             separator=","
                             direction="up"
                             duration={1}
-                            className="count-up-text" /> + Shots Planned and Counting...
-                    </div>
+                            className="count-up-text" />+ Shots Planned and Counting...
+                    </StarBorder>
+                    
                     <h1 className="text-4xl md:text-6xl mb-4 md:text-center md:leading-[1.15] font-[440]">
                         The Only App You Need <br /> To Plan The Perfect Shot.
                         {/* <span className="bg-gradient-to-r from-[#B800FF] via-[#FF6B00] to-[#FF2DCB] bg-clip-text text-transparent">
                            {" "} The Perfect Shot.
                         </span> */}
                     </h1>
-                    <p className="max-w-3xl text-lg mb-6 md:text-center text-[#F1F1F1]">
+                    <p className="max-w-3xl text-lg mb-6 md:text-center text-[#C1C1C1]">
                         All the information you need beautifully organized in a clean, focused UI. Everything you need is finally in the right place.
                     </p>
                     <div className="flex flex-col md:flex-row gap-4 text-base w-full md:w-auto justify-center items-start md:items-center">
