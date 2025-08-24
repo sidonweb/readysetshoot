@@ -138,11 +138,10 @@ const Features = () => {
               <div key={index} className="flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center gap-5">
                 <div className="flex flex-row items-center justify-start md:justify-between gap-4 md:gap-10">
                   {/* Number */}
-                  <div className="flex flex-row items-start md:items-center justify-start md:justify-between gap-10">
-                    <span className="text-orange-500 text-2xl">
+                    <span className="text-[#FF6B2C] text-lg">
                       <span>#</span>{feature.number}
                     </span>
-                  </div>
+                
                   {/* Title */}
                   <div className="md:col-span-4 text-center md:text-left">
                     <h3 className="text-2xl font-semibold text-white">

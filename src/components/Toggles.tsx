@@ -50,9 +50,9 @@ const Toggles: React.FC = () => {
     const currentContent = featureContent[activeMode];
 
     return (
-        <div className="bg-[#0E0F11] text-white px-4 md:px-8 lg:px-24 py-20 md:py-32">
+        <div className="bg-[#0E0F11] text-white px-8 lg:px-24 py-20 md:py-32">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col gap-16  items-center">
+                <div className="flex flex-col gap-16 md:gap-24  items-center">
                     {/* Navigation Tabs */}
                     <div className="flex flex-row justify-evenly items-center w-full max-w-6xl">
                         {Object.entries(featureContent).map(([key, content]) => (
@@ -68,20 +68,20 @@ const Toggles: React.FC = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="flex flex-col md:flex-row gap-12 items-center justify-between w-full max-w-6xl">
+                    <div className="flex flex-col md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
                         {/* Feature List */}
-                        <div className="space-y-6 mt-12">
+                        <div className="space-y-6">
                             {currentContent.items.map((item, index) => (
                                 <div
                                     key={`${activeMode}-${index}`}
-                                    className="flex items-start space-x-4 group opacity-0 animate-fade-in-up"
+                                    className="flex items-center space-x-4 group opacity-0 animate-fade-in-up"
                                     style={{
                                         animationDelay: `${index * 100}ms`,
                                         animationFillMode: 'forwards'
                                     }}
                                 >
-                                    <div className="w-2 h-2 rounded-full bg-[#CFCFCF] mt-3 flex-shrink-0 "></div>
-                                    <p className="text-lg text-[#CFCFCF]">
+                                    <div className="w-1 h-1 rounded-full bg-[#CFCFCF] flex-shrink-0 "></div>
+                                    <p className=" text-[#CFCFCF]">
                                         {item}
                                     </p>
                                 </div>
