@@ -144,7 +144,7 @@ const Features = () => {
                 
                   {/* Title */}
                   <div className="md:col-span-4 text-center md:text-left">
-                    <h3 className="text-2xl font-semibold text-white">
+                    <h3 className="text-2xl font-semibold text-white text-nowrap">
                       {feature.title}
                     </h3>
                   </div>

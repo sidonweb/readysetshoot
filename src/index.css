@@ -15,6 +15,7 @@ h3, h4, h5, h6, .syne {
 
 body {
   font-family: 'Hepta Slab', serif, sans-serif;
+  background-color: black;
 }
 
 ::-webkit-scrollbar {

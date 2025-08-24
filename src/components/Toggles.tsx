@@ -50,7 +50,7 @@ const Toggles: React.FC = () => {
     const currentContent = featureContent[activeMode];
 
     return (
-        <div className="bg-[#0E0F11] text-white px-8 lg:px-24 py-20 md:py-32">
+        <div className="bg-[#111111] text-white px-8 lg:px-24 py-20 md:py-32">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col gap-16 md:gap-24  items-center">
                     {/* Navigation Tabs */}

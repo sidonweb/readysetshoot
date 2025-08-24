@@ -41,13 +41,13 @@ const FAQ = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white px-4 md:px-8 lg:px-24 py-8 md:py-32">
+        <div className=" bg-black text-white py-20 md:py-32 px-4">
             <div className="flex flex-col md:flex-row items-start justify-center">
                 {/* Left Side - FAQ */}
                 <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
                         <p className="text-gray-400 text-sm mb-3">FAQs</p>
-                        <h1 className="text-4xl leading-tight">
+                        <h1 className="text-3xl md:text-4xl leading-tight">
                             Questions → <span className="text-orange-500">Answers</span>
                         </h1>
                     </div>
@@ -64,13 +64,13 @@ const FAQ = () => {
                             >
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-6 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${
+                                    className={`w-full py-6 flex items-center gap-10 justify-between text-left transition-all duration-300 ease-in-out ${
                                         openItem === item.id 
                                             ? 'bg-[#0E0F11]  px-4 rounded-lg' 
                                             : 'cursor-pointer'
                                     }`}
                                 >
-                                    <span className={`text-lg transition-colors duration-300 ease-in-out ${
+                                    <span className={`md:text-lg transition-colors duration-300 ease-in-out ${
                                         openItem === item.id 
                                             ? 'text-[#999FA5]' 
                                             : 'text-[#F5F5F5]'

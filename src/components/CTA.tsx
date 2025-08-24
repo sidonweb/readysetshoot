@@ -17,7 +17,7 @@ const CTA = () => {
                         </div>
 
                         {/* Download Buttons */}
-                        <div className="flex flex-row gap-4">
+                        <div className="flex flex-col md:flex-row gap-4">
                             {/* App Store Button */}
                             <a
                                 href="#"
