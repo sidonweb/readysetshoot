@@ -47,7 +47,7 @@ const Future: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-16 px-4">
+    <div className=" bg-black text-white py-20 md:py-32 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="md:text-center mb-16">

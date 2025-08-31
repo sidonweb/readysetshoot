@@ -160,7 +160,7 @@ const Features = () => {
         {/* Desktop Features Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => (
-            <div key={index} className="cursor-target bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#3A0CA3] rounded-2xl p-6 max-w-sm shadow-lg flex flex-col items-start">
+            <div key={index} className="cursor-target bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#8A4AFF] rounded-2xl p-6 max-w-sm shadow-lg flex flex-col items-start">
               <div className="w-10 h-10 flex items-center justify-center mb-4">
                 {feature.icon}
               </div>

@@ -99,7 +99,7 @@ const Slideshow: React.FC = () => {
           <div
             key={idx}
             onClick={() => openModal(idx)}
-            className="bg-white rounded-lg shadow-lg text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center cursor-target"
+            className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-lg border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center cursor-target"
           >
             <div className="overflow-hidden w-full">
               <img
