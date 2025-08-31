@@ -41,7 +41,7 @@ const Future: React.FC = () => {
       icon: <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.4835 5.95943C21.3168 4.24276 19.9835 2.64276 18.4835 1.20943C17.9001 0.642762 16.9168 1.1761 17.0835 1.97609C17.4001 3.54276 17.7335 5.60943 17.7335 7.45943C17.7335 10.8928 15.4835 13.6761 12.0501 13.6761C9.48347 13.6761 7.38347 12.1261 6.46681 9.90943C6.30014 9.57609 6.23347 9.37609 6.13347 9.00943C5.95014 8.30943 5.03347 8.09276 4.63347 8.70943C4.33347 9.15943 4.05014 9.60943 3.78347 10.0928C1.73321 13.6142 0.657479 17.618 0.666808 21.6928C0.666808 29.0594 6.63347 35.0261 14.0001 35.0261C21.3668 35.0261 27.3335 29.0594 27.3335 21.6928C27.3335 15.8761 25.5335 10.4761 22.4835 5.95943ZM13.5168 30.0261C10.5501 30.0261 8.15014 27.6928 8.15014 24.7928C8.15014 22.0928 9.90014 20.1928 12.8335 19.5928C15.2835 19.0928 17.8001 18.0428 19.5501 16.3928C20.0168 15.9594 20.7835 16.1594 20.9168 16.7761C21.3001 18.4761 21.5001 20.2428 21.5001 22.0261C21.5168 26.4428 17.9335 30.0261 13.5168 30.0261Z" fill="#A36CFF" />
       </svg>,
-      title: "You Decide Next",
+      title: "You Decide What's Next",
       description: "Have something in mind? Request your own feature right from the app. We're building what you need."
     }
   ];
@@ -51,7 +51,7 @@ const Future: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="md:text-center mb-16">
-          <h1 className="text-4xl mb-6">
+          <h1 className="text-3xl md:text-4xl mb-6">
             <span className="text-orange-500">Upcoming</span> Features
           </h1>
           <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">
@@ -62,14 +62,14 @@ const Future: React.FC = () => {
         {/* Features Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-12">
           {features.map((feature, index) => (
-            <div key={index} className={`cursor-target flex flex-col justify-between items-start gap-6 p-4 md:p-6 bg-gradient-to-b ${feature.title == "You Decide Next" ? "from-[#5A00FF] to-[#7F39FF]" : "from-[#000000] to-[#111111]"}  rounded-2xl border border-[#111111]`}>
+            <div key={index} className={`cursor-target flex flex-col justify-between items-start gap-6 p-4 md:p-6 bg-gradient-to-b ${feature.title == "You Decide What's Next" ? "from-[#5A00FF] to-[#7F39FF]" : "from-[#000000] to-[#111111]"}  rounded-2xl border border-[#111111]`}>
               {/* Icon */}
               <div className=" text-gray-400 mt-1">
                 {feature.icon}
               </div>
 
               {/* Content */}
-              <h3 className="text-xl md:text-2xl font-semibold text-[#F5F5F5] mb-3">
+              <h3 className="text-lg md:text-2xl font-semibold text-[#F5F5F5] mb-3">
                 {feature.title}
               </h3>
             </div>

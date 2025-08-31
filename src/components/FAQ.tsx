@@ -46,7 +46,6 @@ const FAQ = () => {
             <div className="flex flex-col md:flex-row items-start justify-center">
                 <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
-                        <p className="text-gray-400 text-sm mb-3">FAQs</p>
                         <h1 className="text-3xl md:text-4xl leading-tight">
                             Questions → <span className="text-orange-500">Answers</span>
                         </h1>

@@ -25,7 +25,7 @@ const Landing = () => {
       <div className="relative w-full overflow-hidden px-4 lg:px-24 py-20 md:py-32">
 
         <div className="md:text-center mb-16 text-white">
-          <h1 className="text-4xl mb-6">
+          <h1 className="text-3xl md:text-4xl mb-6">
             <span className="text-orange-500">Moments From</span> Our Community
           </h1>
           <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">

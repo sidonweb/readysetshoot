@@ -145,7 +145,7 @@ const Features = () => {
 
 
   return (
-    <section className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4 rounded-2xl">
+    <section className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Header */}
         <div className="md:text-center mb-24 md:mb-32">
@@ -178,7 +178,7 @@ const Features = () => {
         <div className="block md:hidden w-11/12">
           <div className="flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar">
             {features.map((feature, index) => (
-              <div key={index} className="flex-shrink-0 w-[85vw] max-w-sm mr-3 snap-start">
+              <div key={index} className="flex-shrink-0 w-[75vw] max-w-sm mr-3 snap-start">
                 <div className="bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#3A0CA3] rounded-2xl p-6 h-full shadow-lg flex flex-col items-start">
                   <div className="w-10 h-10 flex items-center justify-center mb-4">
                     {feature.icon}

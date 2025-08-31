@@ -147,7 +147,7 @@ const Toggles: React.FC = () => {
                     </div>
                     <div className="flex flex-col-reverse md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
                         {/* Feature List */}
-                        <div className="space-y-9">
+                        <div className="space-y-12">
                             {currentContent.items.map((item, index) => (
                                 <div
                                     key={`${activeMode}-${index}`}
@@ -158,10 +158,10 @@ const Toggles: React.FC = () => {
                                     }}
                                 >
                                     <div className="text-[#CFCFCF]">
-                                        <h4 className="text-[#F5F5F5] font-semibold mb-4 text-xl flex items-center gap-2">{item.icon}{item.title}</h4>
-                                        <ul className="list-disc list-inside">
+                                        <h4 className="text-[#F5F5F5] font-semibold mb-4 text-xl flex items-center gap-4">{item.icon}{item.title}</h4>
+                                        <ul className="">
                                             {item.list.map((listItem, listIndex) => (
-                                                <li key={`${activeMode}-${index}-${listIndex}`}>{listItem}</li>
+                                                <li className='flex flex-row items-center gap-4' key={`${activeMode}-${index}-${listIndex}`}><div className='w-1 h-1 bg-[#C7C7C7] rounded-full'/>{listItem}</li>
                                             ))}
                                         </ul>
                                     </div>

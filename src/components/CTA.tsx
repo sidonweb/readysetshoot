@@ -1,7 +1,7 @@
 const CTA = () => {
     return (
-        <section className="bg-black text-white py-8 md:py-32 flex items-center">
-            <div className="max-w-7xl bg-[#0E0F11] mx-4 md:mx-auto pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
+        <section className=" text-white py-8 md:py-32 flex items-center">
+            <div className="max-w-7xl bg-gradient-to-b from-[#000000] to-[#111111] border-2 border-[#111111] mx-4 md:mx-auto md:pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
                 <div className="flex flex-col-reverse md:flex-row justify-between gap-8 lg:gap-16 items-center">
                     {/* Left Content */}
                     <div className="space-y-8 px-3 py-12 md:py-0">
@@ -21,7 +21,7 @@ const CTA = () => {
                             {/* App Store Button */}
                             <a
                                 href="#"
-                                className="cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
+                                className="w-full md:w-fit cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <div className="flex items-center space-x-3">
                                     <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -37,7 +37,7 @@ const CTA = () => {
                             {/* Google Play Button */}
                             <a
                                 href="#"
-                                className="cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200"
+                                className="w-full md:w-fit cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200"
                             >
                                 <div className="flex items-center space-x-3">
                                     <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -53,7 +53,7 @@ const CTA = () => {
                     </div>
 
                     {/* Right Image */}
-                    <div className="flex justify-center lg:justify-end">
+                    <div className="hidden md:flex justify-center lg:justify-end">
                         <img
                             src="/CTA.png"
                             alt="Photography app interface on mobile phone"
