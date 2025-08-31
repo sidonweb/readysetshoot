@@ -75,7 +75,7 @@ const Testimonials: React.FC = () => {
 
     const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
         <div 
-            className="flex flex-col justify-between w-80 bg-[#111111] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-orange-500/30"
+            className="cursor-target flex flex-col justify-between w-80 bg-[#111111] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-orange-500/30"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
@@ -95,7 +95,7 @@ const Testimonials: React.FC = () => {
 
 
     return (
-        <section className="bg-[#111111] py-20 md:py-32 px-10 overflow-hidden">
+        <section className="bg-black py-20 md:py-32 px-10 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-20 md:mb-32">

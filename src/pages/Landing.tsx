@@ -1,4 +1,4 @@
-import BentoGrid from "../components/BentoGrid";
+// import BentoGrid from "../components/BentoGrid";
 import Features from "../components/Features";
 import Footer from "../components/ui/Footer";
 import Future from "../components/Future";
@@ -21,7 +21,7 @@ const Landing = () => {
       <Future />
       
       {/* <Testing /> */}
-      <BentoGrid />
+      {/* <BentoGrid /> */}
       <Slideshow />
       <Testimonials />
       <FAQ />

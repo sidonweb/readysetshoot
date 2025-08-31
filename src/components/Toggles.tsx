@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { type JSX, useState } from 'react';
 
 type FeatureMode = 'sunrise' | 'sunset' | 'astro';
 
 interface FeatureContent {
     title: string;
-    items: string[];
+    items: { icon: JSX.Element; title: string; list: string[] }[];
     image: string;
 }
 
@@ -15,33 +15,78 @@ const Toggles: React.FC = () => {
         sunrise: {
             title: 'Sunrise',
             items: [
-                'Sunrise Time & Light Quality',
-                'Rain, Cloud Cover, Temperature, Visibility',
-                'Tide Chart With High, Low & Tide At Sunrise',
-                'Wave Height & Interval For Coastal Conditions',
-                'Observation Timeline'
+                {
+                    icon: <svg></svg>,
+                    title: 'Sunrise Time & Light Quality',
+                    list: ["Sunrise start and end times", "Light quality forecast for planning"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Weather Conditions',
+                    list: ["Rain probability and cloud cover", "Temperature and visibility levels"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Tides & Waves',
+                    list: ["High and low tide chart for sunrise", "Wave height and interval details"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Observation Timelines',
+                    list: ["Hour-by-hour change in conditions", "Best window for morning shooting"]
+                }
             ],
             image: "./Sunrise.png"
         },
         sunset: {
             title: 'Sunset',
             items: [
-                'Sunset Time & Golden Hour Duration',
-                'Weather Conditions & Cloud Formations',
-                'Tide Levels During Evening Hours',
-                'Wind Patterns & Atmospheric Clarity',
-                'Photography Timeline & Best Viewing Times'
+                {
+                    icon: <svg></svg>,
+                    title: 'Sunrise & Light',
+                    list: ["Sunset start and end times", "Light quality forecast for planning"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Weather Conditions',
+                    list: ["Rain probability and cloud cover", "Temperature and visibility levels"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Tides & Waves',
+                    list: ["High and low tide chart for sunset", "Wave height and interval details"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Observation Timeline',
+                    list: ["Hour-by-hour change in conditions", "best windoe for evening shooting"]
+                }
             ],
             image: "./Sunset.png"
         },
         astro: {
             title: 'Astro',
             items: [
-                'Moon Phases & Rise/Set Times',
-                'Planet Visibility & Constellation Maps',
-                'Milky Way Core Visibility Windows',
-                'Light Pollution & Darkness Quality',
-                'Meteor Shower & Celestial Event Calendar'
+                {
+                    icon: <svg></svg>,
+                    title: 'Astro Twilight',
+                    list: ["Twilight start and end times", "Best observation darkness window"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Weather & Sky Quality',
+                    list: ["Rain probability and cloud cover", "Temperature and Bortle index"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Milky Way & Moon',
+                    list: ["Milky Way rise, transit, set times", "Moon phase, illumination, timings"]
+                },
+                {
+                    icon: <svg></svg>,
+                    title: 'Aurora & Timeline',
+                    list: ["Live aurora activity forecast", "Hour-by-hour observation timeline"]
+                }
             ],
             image: "./Astro.png"
         }
@@ -50,7 +95,7 @@ const Toggles: React.FC = () => {
     const currentContent = featureContent[activeMode];
 
     return (
-        <div className="bg-[#111111] text-white px-8 lg:px-24 py-20 md:py-32">
+        <div className="bg-black text-white px-8 lg:px-24 py-20 md:py-32 rounded-t-2xl">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col gap-16 md:gap-24  items-center">
                     {/* Navigation Tabs */}
@@ -68,7 +113,7 @@ const Toggles: React.FC = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="flex flex-col md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
+                    <div className="flex flex-col-reverse md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
                         {/* Feature List */}
                         <div className="space-y-6">
                             {currentContent.items.map((item, index) => (
@@ -80,10 +125,14 @@ const Toggles: React.FC = () => {
                                         animationFillMode: 'forwards'
                                     }}
                                 >
-                                    <div className="w-1 h-1 rounded-full bg-[#CFCFCF] flex-shrink-0 "></div>
-                                    <p className=" text-[#CFCFCF]">
-                                        {item}
-                                    </p>
+                                    <div className="text-[#CFCFCF]">
+                                        <h4 className="text-[#F5F5F5] font-semibold mb-4 text-xl">{item.title}</h4>
+                                        <ul className="list-disc list-inside">
+                                            {item.list.map((listItem, listIndex) => (
+                                                <li key={`${activeMode}-${index}-${listIndex}`}>{listItem}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             ))}
                         </div>

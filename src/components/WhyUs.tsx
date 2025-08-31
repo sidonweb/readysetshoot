@@ -1,11 +1,12 @@
 import React from 'react';
+import iphone from "../../public/iPhone FAQ.png"
 
 const WhyUs: React.FC = () => {
     return (
         <div className=" bg-black text-white flex items-center justify-center px-10 lg:px-24 py-20 md:py-32">
-            <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-                {/* Left side - Video container */}
-                <div className="flex-shrink-0 relative w-80 h-80 md:w-96 md:h-96 ">
+            <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+                {/* Left side - Video or Image container */}
+                {/* <div className="flex-shrink-0 relative w-80 h-80 md:w-96 md:h-96 ">
                     <video
                         className="w-full h-full object-cover rounded-full"
                         autoPlay
@@ -16,7 +17,9 @@ const WhyUs: React.FC = () => {
                         <source src="/Metallic.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                </div>
+                </div> */}
+                
+
 
                 {/* Right side - Content */}
                 <div className="flex-1 max-w-3xl space-y-6 lg:space-y-12 text-center md:text-left">
@@ -25,7 +28,7 @@ const WhyUs: React.FC = () => {
                         <span className="text-white">ReadySetShoot</span>
                     </h1>
 
-                    <div className="space-y-4 lg:space-y-6 text-base text-[#CFCFCF] text-justify">
+                    <div className="space-y-4 lg:space-y-6 text-base text-[#CFCFCF] text-justify md:max-w-xl">
                         <p>
                             Most photo planning tools weren't made for photographers.
                         </p>
@@ -49,6 +52,14 @@ const WhyUs: React.FC = () => {
                             Because when conditions align, you shouldn't be guessing. You should be ready.
                         </p>
                     </div>
+                </div>
+
+                <div className="hidden md:flex flex-shrink-0 max-w-[260px]">
+                    <img
+                        className="w-full h-auto object-contain animate-float"
+                        src={iphone}
+                        alt="iPhone displaying readysetshoot app"
+                    />
                 </div>
             </div>
         </div>
