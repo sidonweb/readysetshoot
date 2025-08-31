@@ -140,7 +140,7 @@ const Slideshow: React.FC = () => {
 
       {/* Modal for detailed view */}
       {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur-xs flex items-center justify-center z-50 p-4" onClick={closeModal}>
+        <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4" onClick={closeModal}>
           <div className="relative max-w-4xl w-full max-h-4xl" onClick={(e) => e.stopPropagation()}>
             {/* Close button */}
             <button 
