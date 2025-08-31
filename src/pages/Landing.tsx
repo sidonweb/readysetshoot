@@ -29,7 +29,7 @@ const Landing = () => {
             <span className="text-orange-500">Moments From</span> Our Community
           </h1>
           <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">
-            These are some shots captured by people who uses our app, nigga make a good caption, pls.
+            Collection of moments beautifully captured by people who use ReadySetShoot to plan and schedule their photography sessions.
           </p>
         </div>
 

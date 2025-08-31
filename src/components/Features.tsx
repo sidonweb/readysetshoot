@@ -1,6 +1,6 @@
 // import { Camera, CloudSun, MapPin, Moon, Smartphone, Bell } from "lucide-react";
 // import { Camera } from "lucide-react";
-import Carousel from "./ui/Carousel";
+// import Carousel from "./ui/Carousel";
 // const features = [
 //   {
 //     icon: <Camera size={34} />,
@@ -142,6 +142,8 @@ const Features = () => {
     }
   ];
 
+
+
   return (
     <section className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4 rounded-2xl">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
@@ -155,48 +157,58 @@ const Features = () => {
           </p>
         </div>
 
-        {/* Features List */}
+        {/* Desktop Features Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => (
-            <>
-              <div key={index} className="cursor-target bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#3A0CA3] rounded-2xl p-6 max-w-sm shadow-lg flex flex-col items-start">
-                {/* Number */}
-                <div className="w-10 h-10 flex items-center justify-center  mb-4">
-                  {feature.icon}
-
-                </div>
-
-                {/* Title */}
-                <h3 className="text-white text-2xl font-semibold leading-snug">
-                  {feature.title}
-                </h3>
-
-
-                {/* Description */}
-                <p className="text-[#CFCFCF] mt-4 leading-relaxed text-[15px]">
-                  {feature.description}
-                </p>
+            <div key={index} className="cursor-target bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#3A0CA3] rounded-2xl p-6 max-w-sm shadow-lg flex flex-col items-start">
+              <div className="w-10 h-10 flex items-center justify-center mb-4">
+                {feature.icon}
               </div>
-            </>
+              <h3 className="text-white text-2xl font-semibold leading-snug">
+                {feature.title}
+              </h3>
+              <p className="text-[#CFCFCF] mt-4 leading-relaxed text-[15px]">
+                {feature.description}
+              </p>
+            </div>
           ))}
         </div>
-        <div className="block md:hidden">
-          <Carousel
-            cardHeight={380}
-
-            items={features}
-            baseWidth={300}
-            autoplay={true}
-            autoplayDelay={3000}
-            pauseOnHover={true}
-            loop={true}
-            round={false}
-          />
+        
+        {/* Mobile Horizontal Scroll */}
+        <div className="block md:hidden w-11/12">
+          <div className="flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar">
+            {features.map((feature, index) => (
+              <div key={index} className="flex-shrink-0 w-[85vw] max-w-sm mr-3 snap-start">
+                <div className="bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#3A0CA3] rounded-2xl p-6 h-full shadow-lg flex flex-col items-start">
+                  <div className="w-10 h-10 flex items-center justify-center mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-white text-2xl font-semibold leading-snug">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[#CFCFCF] mt-4 leading-relaxed text-[15px]">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
       </div>
+      
+      <style>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;  /* Chrome, Safari and Opera */
+        }
+      `}</style>
     </section>
   );
+
+
 };
 
 export default Features;
