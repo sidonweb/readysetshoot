@@ -75,14 +75,14 @@ const Testimonials: React.FC = () => {
 
     const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
         <div 
-            className="cursor-target flex flex-col justify-between w-80 bg-[#111111] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-orange-500/30"
+            className="cursor-target flex flex-col justify-between w-80 bg-[#0E0F11] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-[#5A00FF]"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
             <div className="flex items-center mb-4">
                 {renderStars(testimonial.rating)}
             </div>
-            <p className="text-[#CFCFCF] text-normal leading-relaxed mb-6 min-h-[4.5rem]">
+            <p className="text-[#F1F1F1] text-normal leading-relaxed mb-6 min-h-[4.5rem]">
                 {testimonial.text}
             </p>
             <div className="text-right">
@@ -95,12 +95,12 @@ const Testimonials: React.FC = () => {
 
 
     return (
-        <section className="bg-black py-20 md:py-32 px-10 overflow-hidden">
+        <section className="bg-black py-20 md:py-32 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-20 md:mb-32">
+                <div className="md:text-center mb-20 md:mb-32">
                     <h2 className="text-3xl md:text-4xl text-white mb-4 unbounded">
-                        Why <span className="text-orange-500">They Use</span> ReadySetShoot
+                        Why <span className="text-[#FF6B2C]">They Use</span> ReadySetShoot
                     </h2>
                     <p className="text-[#CFCFCF] md:text-lg max-w-2xl mx-auto">
                         Real feedback from the photographers who rely on us to get the shot.
@@ -109,9 +109,9 @@ const Testimonials: React.FC = () => {
 
                 {/* Scrolling Testimonials */}
                 <div className="relative">
-                    {/* Gradient overlays
-                    <div className="absolute left-0 top-0 bottom-0 w-22 bg-gradient-to-r from-[#0E0F11] to-transparent z-10 pointer-events-none"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-22 bg-gradient-to-l from-[#0E0F11] to-transparent z-10 pointer-events-none"></div> */}
+                    Gradient overlays
+                    <div className="absolute left-0 top-0 bottom-0 w-10 md:w-22 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-10 md:w-22 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
                     {/* Scrolling container */}
                     <div className="overflow-hidden">

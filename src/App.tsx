@@ -6,10 +6,12 @@ const App = () => {
 
   return (
     <>
+    <div className='hidden md:block'>
      <TargetCursor 
         spinDuration={10}
         hideDefaultCursor={true}
       />
+      </div>
       <Landing />
     </>
   )

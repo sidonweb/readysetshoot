@@ -30,6 +30,7 @@ export interface CarouselProps {
     pauseOnHover?: boolean;
     loop?: boolean;
     round?: boolean;
+    cardHeight?: number; // New prop for fixed card height
 }
 
 const DEFAULT_ITEMS: CarouselItem[] = [
@@ -78,9 +79,9 @@ export default function Carousel({
     pauseOnHover = false,
     loop = false,
     round = false,
+    cardHeight = 200, // Default fixed height for cards
 }: CarouselProps): JSX.Element {
-    const containerPadding = 16;
-    const itemWidth = baseWidth - containerPadding * 2;
+    const itemWidth = baseWidth;
     const trackItemOffset = itemWidth + GAP;
 
     const carouselItems = loop ? [...items, items[0]] : items;
@@ -216,7 +217,7 @@ export default function Carousel({
                                 } overflow-hidden cursor-grab active:cursor-grabbing`}
                             style={{
                                 width: itemWidth,
-                                height: round ? itemWidth : "100%",
+                                height: round ? itemWidth : `${cardHeight}px`, // Fixed height for non-round cards
                                 rotateY: rotateY,
                                 ...(round && { borderRadius: "50%" }),
                             }}

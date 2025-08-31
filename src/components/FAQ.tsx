@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 const FAQ = () => {
@@ -43,7 +44,6 @@ const FAQ = () => {
     return (
         <div className=" bg-black text-white py-20 md:py-32 px-4">
             <div className="flex flex-col md:flex-row items-start justify-center">
-                {/* Left Side - FAQ */}
                 <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
                         <p className="text-gray-400 text-sm mb-3">FAQs</p>
@@ -54,52 +54,39 @@ const FAQ = () => {
 
                     <div className="space-y-2">
                         {faqData.map((item) => (
-                            <div 
-                                key={item.id} 
-                                className={`transition-all duration-300 ease-in-out ${
-                                    openItem === item.id 
-                                        ? 'bg-[#0E0F11]  rounded-lg border-b border-transparent' 
+                            <div
+                                key={item.id}
+                                className={`transition-all duration-300 ease-in-out ${openItem === item.id
+                                        ? 'bg-[#0E0F11]  rounded-lg border-b border-transparent'
                                         : 'border-b border-gray-800 rounded-lg'
-                                }`}
+                                    }`}
                             >
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full py-6 flex items-center gap-10 justify-between text-left transition-all duration-300 ease-in-out ${
-                                        openItem === item.id 
-                                            ? 'bg-[#0E0F11]  px-4 rounded-lg' 
-                                            : 'cursor-pointer'
-                                    }`}
+                                    className={`w-full py-6 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${openItem === item.id
+                                            ? "bg-[#0E0F11] px-4 rounded-lg"
+                                            : "cursor-pointer"
+                                        }`}
                                 >
-                                    <span className={`md:text-lg transition-colors duration-300 ease-in-out ${
-                                        openItem === item.id 
-                                            ? 'text-[#999FA5]' 
-                                            : 'text-[#F5F5F5]'
-                                    }`}>
+                                    <span
+                                        className={`md:text-lg transition-colors duration-300 ease-in-out ${openItem === item.id ? "text-[#999FA5]" : "text-[#F5F5F5]"
+                                            }`}
+                                    >
                                         {item.question}
                                     </span>
-                                    <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
-                                        <div className="relative w-4 h-4">
-                                            {/* Horizontal line - always visible */}
-                                            <div className="absolute top-1/2 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out" />
-                                            {/* Vertical line - rotates and fades when open */}
-                                            <div
-                                                className={`absolute top-1/2 left-1/2 w-0.5 h-4 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-in-out ${
-                                                    openItem === item.id 
-                                                        ? 'opacity-0 rotate-90 scale-0' 
-                                                        : 'opacity-100 rotate-0 scale-100'
-                                                }`}
-                                            />
-                                        </div>
-                                    </div>
+
+                                    <ChevronDown
+                                        className={`w-5 h-5 text-white transform transition-transform duration-300 ${openItem === item.id ? "rotate-180" : "rotate-0"
+                                            }`}
+                                    />
                                 </button>
-                                
+
                                 {/* Answer container with smooth height transition */}
                                 <div
-                                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                                        openItem === item.id 
-                                            ? 'max-h-96 opacity-100' 
+                                    className={`overflow-hidden transition-all duration-500 ease-in-out ${openItem === item.id
+                                            ? 'max-h-96 opacity-100'
                                             : 'max-h-0 opacity-0'
-                                    }`}
+                                        }`}
                                 >
                                     <div className="px-4 pb-6 pt-2 text-gray-300 leading-relaxed">
                                         {item.answer}

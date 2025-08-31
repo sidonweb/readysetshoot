@@ -6,11 +6,11 @@ const CTA = () => {
                     {/* Left Content */}
                     <div className="space-y-8 px-3 py-12 md:py-0">
                         <div className="space-y-2">
-                            <h1 className="text-4xl leading-tight">
+                            <h1 className="text-2xl md:text-4xl leading-tight">
                                 <span className="text-orange-500">Built by</span>{' '}
                                 <span className="text-white">photographers.</span>
                             </h1>
-                            <h2 className="text-4xl leading-tight">
+                            <h2 className="text-2xl md:text-4xl leading-tight">
                                 <span className="text-orange-500">For</span>{' '}
                                 <span className="text-white">photographers.</span>
                             </h2>
@@ -21,7 +21,7 @@ const CTA = () => {
                             {/* App Store Button */}
                             <a
                                 href="#"
-                                className="inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
+                                className="cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-all duration-300"
                             >
                                 <div className="flex items-center space-x-3">
                                     <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -37,7 +37,7 @@ const CTA = () => {
                             {/* Google Play Button */}
                             <a
                                 href="#"
-                                className="inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200"
+                                className="cursor-target inline-flex items-center justify-center bg-transparent border border-white rounded-lg px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200"
                             >
                                 <div className="flex items-center space-x-3">
                                     <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
