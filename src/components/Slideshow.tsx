@@ -2,6 +2,7 @@
 // import { ChevronLeft, ChevronRight } from 'lucide-react';
 // import CircularGallery from './ui/CircularGallery';
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
 const images = [
@@ -90,7 +91,7 @@ const Slideshow: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-7xl mx-auto">
       {/* Grid with limited number of images + gallery card */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {/* Display limited number of images */}
@@ -143,7 +144,7 @@ const Slideshow: React.FC = () => {
           <div className="relative max-w-4xl w-full max-h-4xl" onClick={(e) => e.stopPropagation()}>
             {/* Close button */}
             <button 
-              className="cursor-target absolute top-4 right-4 text-white text-3xl bg-[#FF6B2C] w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              className="cursor-target absolute top-4 right-4 text-white text-3xl bg-[#FF6B2C] w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
               onClick={closeModal}
             >
               &times;
@@ -151,16 +152,16 @@ const Slideshow: React.FC = () => {
             
             {/* Navigation buttons */}
             <button 
-              className="cursor-target absolute right-16 bottom-5 transform -translate-y-1/2 text-white text-2xl bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              className="cursor-target absolute right-12 md:right-16 bottom-1 md:bottom-5 transform -translate-y-1/2 text-white text-2xl bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
               onClick={() => navigateImage('prev')}
             >
-              &#8249;
+              <ChevronLeft />
             </button>
             <button 
-              className="cursor-target absolute right-4 bottom-5 transform -translate-y-1/2 text-white text-2xl bg-gradient-to-r from-[#5A00FF] to-[#7F39FF]  w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              className="cursor-target absolute right-4 bottom-1 md:bottom-5 transform -translate-y-1/2 text-white text-2xl bg-gradient-to-r from-[#5A00FF] to-[#7F39FF]  w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
               onClick={() => navigateImage('next')}
             >
-              &#8250;
+              <ChevronRight />
             </button>
             
             {/* Image and info */}
