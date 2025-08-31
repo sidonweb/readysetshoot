@@ -28,7 +28,7 @@ const Landing = () => {
           <h1 className="text-3xl md:text-4xl mb-6">
             <span className="text-orange-500">Moments From</span> Our Community
           </h1>
-          <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">
+          <p className="text-[#CFCFCF] text-base max-w-6xl mx-auto leading-relaxed">
             Collection of moments beautifully captured by people who use ReadySetShoot to plan and schedule their photography sessions.
           </p>
         </div>

@@ -102,7 +102,7 @@ const Testimonials: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl text-white mb-4 unbounded">
                         Why <span className="text-[#FF6B2C]">They Use</span> ReadySetShoot
                     </h2>
-                    <p className="text-[#CFCFCF] md:text-lg max-w-2xl mx-auto">
+                    <p className="text-[#CFCFCF] md:text-lg max-w-4xl mx-auto">
                         Real feedback from the photographers who rely on us to get the shot.
                     </p>
                 </div>

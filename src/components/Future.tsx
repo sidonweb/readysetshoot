@@ -54,7 +54,7 @@ const Future: React.FC = () => {
           <h1 className="text-3xl md:text-4xl mb-6">
             <span className="text-orange-500">Upcoming</span> Features
           </h1>
-          <p className="text-[#7E7E7E] text-base max-w-6xl mx-auto leading-relaxed">
+          <p className="text-[#CFCFCF] text-base max-w-6xl mx-auto leading-relaxed">
             We're building more than just a photography tool. What we build next depends on what you tell us matters most.
           </p>
         </div>
