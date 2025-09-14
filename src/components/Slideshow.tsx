@@ -5,24 +5,24 @@
 import React, { useState, useEffect } from "react";
 
 const images = [
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp", alt: "Mountain & Clouds", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(72).webp", alt: "Milky Way", location: "Laddakh, India" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp", alt: "Aesthetic Caption", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp", alt: "Wolf from Siberia", location: "Chernevaya taiga, Siberia" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp", alt: "Frozen Land", location: "Saariselkä, Finland" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(76).webp", alt: "Nature 76", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(77).webp", alt: "Nature 77", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(78).webp", alt: "Nature 78", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(79).webp", alt: "Nature 79", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(80).webp", alt: "Nature 80", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(81).webp", alt: "Nature 81", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(82).webp", alt: "Nature 82", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(71).webp", alt: "Nature 71", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(83).webp", alt: "Nature 83", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(84).webp", alt: "Nature 84", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(85).webp", alt: "Nature 85", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(86).webp", alt: "Nature 86", location: "Dolomites, Italy" },
-  { src: "https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(87).webp", alt: "Nature 87", location: "Dolomites, Italy" }
+  { src: "/gallery/Avalon Beach NSW AU.png", alt: "Avalon Beach", location: "NSW, Australia" },
+  { src: "/gallery/Bronte Beach NSW AU.png", alt: "Bronte Beach", location: "NSW, Australia" },
+  { src: "/gallery/Cathedral Rocks NSW AU.png", alt: "Cathedral Rocks", location: "NSW, Australia" },
+  { src: "/gallery/Comet C_2024 G3.png", alt: "Comet C/2024 G3", location: "Night Sky" },
+  { src: "/gallery/Gardens By The Bay SG.png", alt: "Gardens By The Bay", location: "Singapore" },
+  { src: "/gallery/IC4604 - Rho.png", alt: "IC4604 - Rho", location: "Deep Space" },
+  { src: "/gallery/Iceland.png", alt: "Iceland Landscape", location: "Iceland" },
+  { src: "/gallery/Maroubra Mahon Pool NSW AU.png", alt: "Maroubra Mahon Pool", location: "NSW, Australia" },
+  { src: "/gallery/Milford Sound NZ.png", alt: "Milford Sound", location: "New Zealand" },
+  { src: "/gallery/Mitchell Ridge Lookout NSW AU.jpg", alt: "Mitchell Ridge Lookout", location: "NSW, Australia" },
+  { src: "/gallery/Mona Vale Ocean Pool NSW AUpng.png", alt: "Mona Vale Ocean Pool", location: "NSW, Australia" },
+  { src: "/gallery/Mt Cook NZ.png", alt: "Mt Cook", location: "New Zealand" },
+  { src: "/gallery/NGC6188 - The Dragons of Ara.jpg", alt: "NGC6188 - The Dragons of Ara", location: "Deep Space" },
+  { src: "/gallery/Narrebeen Ocean Pool NSW AU.png", alt: "Narrebeen Ocean Pool", location: "NSW, Australia" },
+  { src: "/gallery/North Curl Curl NSW AU.png", alt: "North Curl Curl", location: "NSW, Australia" },
+  { src: "/gallery/South Island NZ.png", alt: "South Island", location: "New Zealand" },
+  { src: "/gallery/Wanaka Tree NZ.png", alt: "Wanaka Tree", location: "New Zealand" },
+  { src: "/gallery/20250215 Carinae v2.png", alt: "Carinae Nebula", location: "Deep Space" }
 ];
 
 const Slideshow: React.FC = () => {
@@ -140,8 +140,8 @@ const Slideshow: React.FC = () => {
 
       {/* Modal for detailed view */}
       {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4" onClick={closeModal}>
-  <div className="relative max-w-4xl w-full max-h-4xl" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4 md:p-8" onClick={closeModal}>
+  <div className="relative w-full max-w-4xl h-[80vh] md:h-[70vh]" onClick={(e) => e.stopPropagation()}>
     {/* Close button */}
     <button 
       className="cursor-target absolute top-4 md:top-6 right-4 md:right-6 text-white text-3xl backdrop-blur-xs bg-black/20 rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
@@ -173,21 +173,22 @@ const Slideshow: React.FC = () => {
         </p>
     
     {/* Image as background with text overlay */}
-    <div className="relative w-full h-full rounded-2xl overflow-hidden">
-  <img
-    src={activeIndex !== null ? images[activeIndex].src : images[0].src}
-    alt={activeIndex !== null ? images[activeIndex].alt : images[0].alt}
-    className="w-full h-full object-cover"
-  />
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
+  <div className="relative w-full h-full">
+    <img
+      src={activeIndex !== null ? images[activeIndex].src : images[0].src}
+      alt={activeIndex !== null ? images[activeIndex].alt : images[0].alt}
+      className="absolute inset-0 w-full h-full object-cover object-center"
+    />
+  </div>
 
   {/* Bottom vignette */}
-  
-  <div className="absolute top-0 left-0 right-0 h-18 bg-gradient-to-b from-black/30 to-transparent" />
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent" />
+  <div className="absolute top-0 left-0 right-0 h-18 bg-gradient-to-b from-black/30 to-transparent z-[1]" />
+  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent z-[1]" />
 
   {/* Text overlay */}
-  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white z-10">
-    <p className="text-[#F5F5F5]  text-lg md:text-2xl leading-relaxed unbounded">
+  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white z-[2]">
+    <p className="text-[#F5F5F5] text-lg md:text-2xl leading-relaxed unbounded">
       {activeIndex !== null ? images[activeIndex].alt : images[0].alt}
     </p>
     <p className="text-[#F5F5F5] text-xs md:text-sm leading-relaxed font-light">
