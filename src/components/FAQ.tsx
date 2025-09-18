@@ -42,7 +42,7 @@ const FAQ = () => {
     };
 
     return (
-        <div className=" bg-black text-white py-20 md:py-32 px-4">
+        <section id='faqs' className=" bg-black text-white py-20 md:py-32 px-4 reveal scroll-mt-nav">
             <div className="flex flex-col md:flex-row items-start justify-center">
                 <div className="w-full px-2 md:px-24">
                     <div className="mb-12">
@@ -96,7 +96,7 @@ const FAQ = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

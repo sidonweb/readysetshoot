@@ -1,9 +1,9 @@
 import React from 'react';
-import iphone from "../../public/iPhone FAQ.png"
+import iphone from "/iPhone FAQ.png"
 
 const WhyUs: React.FC = () => {
     return (
-        <div className=" bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white flex items-center justify-center px-4 lg:px-24 py-20 md:py-32">
+        <section id='whyus' className=" bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white flex items-center justify-center px-4 lg:px-24 py-20 md:py-32">
             <div className="max-w-6xl w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
                 {/* Left side - Video or Image container */}
                 {/* <div className="flex-shrink-0 relative w-80 h-80 md:w-96 md:h-96 ">
@@ -23,6 +23,7 @@ const WhyUs: React.FC = () => {
 
                 {/* Right side - Content */}
                 <div className="flex-1 md:max-w-xl space-y-6 lg:space-y-12 text-center md:text-left">
+
                     <h1 className="text-left text-3xl md:text-4xl mb-20">
                         <span className="text-[#FF6B2C]">Why We Built</span>{' '}
                         <span className="text-white">ReadySetShoot</span>
@@ -30,7 +31,7 @@ const WhyUs: React.FC = () => {
 
                     <div className="space-y-4 lg:space-y-6 text-base text-white text-justify">
                         <p>
-                            Great shots depend on timing, light, and conditions but most planning tools only scratch the surface.
+                                Great shots depend on timing, light, and conditions but most planning tools only scratch the surface.
                         </p>
 
                         <p>
@@ -60,7 +61,7 @@ const WhyUs: React.FC = () => {
                 </div>
 
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -1,4 +1,3 @@
-// import BentoGrid from "../components/BentoGrid";
 import Features from "../components/Features";
 import Footer from "../components/ui/Footer";
 import Future from "../components/Future";
@@ -9,7 +8,6 @@ import Slideshow from "../components/Slideshow";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
 import CTA from "../components/CTA";
-// import Testing from "../components/Testing";
 
 const Landing = () => {
   return (
@@ -19,9 +17,6 @@ const Landing = () => {
       <Toggles />
       <WhyUs />
       <Future />
-
-      {/* <Testing /> */}
-      {/* <BentoGrid /> */}
       <div className="relative w-full overflow-hidden px-4 lg:px-24 py-20 md:py-32">
 
         <div className="md:text-center mb-16 text-white">

@@ -95,7 +95,7 @@ const Testimonials: React.FC = () => {
 
 
     return (
-        <section className="bg-black py-20 md:py-32 px-4 overflow-hidden">
+        <section id='testimonials' className="bg-black py-20 md:py-32 px-4 overflow-hidden reveal scroll-mt-nav">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="md:text-center mb-20 md:mb-32">

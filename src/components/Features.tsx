@@ -145,7 +145,7 @@ const Features = () => {
 
 
   return (
-    <section className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4">
+    <section id="features" className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4 reveal scroll-mt-nav">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Header */}
         <div className="md:text-center mb-24 md:mb-32">

@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+type NavItem = "Home" | "About" | "Services" | "FAQs" | "Contact" | "Get App";
+
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Features", "Why Us", "Testimonials", "FAQs", "Get App"];
+  const navItems: NavItem[] = ["Home", "About", "Services", "FAQs", "Contact", "Get App"];
+
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xs bg-black/40 text-white px-6 py-8">
@@ -24,18 +28,32 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <ul className="hidden md:flex justify-center items-center space-x-6 text-sm font-light">
-          {navItems.map((item) => (
-            item === "Get App" ? (
-              <li key={item} className="cursor-pointer bg-[#5A00FF] hover:bg-[#3E00AF] rounded-full text-[#F1F1F1] hover:text-white transition-all duration-300 px-4 py-2">
-                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
+          {navItems.map((item) => {
+            let href = "#";
+
+            if (item === "FAQs") {
+              href = "#faqs";
+            } else if (item === "Get App") {
+              href = "#getapp"; // or an external link like "https://play.google.com"
+            } else {
+              href = `#${item.replace(/\s+/g, "").toLowerCase()}`;
+            }
+
+            return (
+              <li
+                key={item}
+                className={
+                  item === "Get App"
+                    ? "cursor-pointer bg-[#5A00FF] hover:bg-[#3E00AF] rounded-full text-[#F1F1F1] hover:text-white transition-all duration-300 px-4 py-2"
+                    : "cursor-pointer text-[#CACACA] hover:text-white transition-all duration-300"
+                }
+              >
+                <a href={href}>{item}</a>
               </li>
-            ) : (
-              <li key={item} className="cursor-pointer text-[#CACACA] hover:text-white transition-all duration-300">
-                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`}>{item}</a>
-              </li>
-            )
-          ))}
+            );
+          })}
         </ul>
+
 
         {/* Mobile Icon */}
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -49,7 +67,7 @@ const Navbar = () => {
           <ul className="flex flex-col space-y-4 text-lg font-extralight">
             {navItems.map((item) => (
               <li key={item} className="cursor-pointer hover:text-indigo-300 transition-all duration-200">
-                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`} onClick={() => setIsOpen(false)}>
+                <a href={`#${item === 'FAQs' ? 'faqs' : item.replace(/\s+/g, '').toLowerCase()}`} onClick={() => setIsOpen(false)}>
                   {item}
                 </a>
               </li>

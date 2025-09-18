@@ -25,6 +25,10 @@ body {
   background-color: black;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
@@ -85,4 +89,21 @@ body {
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Offset anchors to account for sticky navbar */
+.scroll-mt-nav {
+  scroll-margin-top: 96px;
 }
