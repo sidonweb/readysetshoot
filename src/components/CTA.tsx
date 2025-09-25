@@ -1,7 +1,10 @@
+import AnimatedBox from "./ui/AnimatedBox";
+
 const CTA = () => {
     return (
         <section className=" text-white py-8 md:py-32 flex items-center">
-            <div className="max-w-7xl bg-gradient-to-b from-[#000000] to-[#111111] border-2 border-[#111111] mx-4 md:mx-auto md:pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
+
+            <AnimatedBox className="max-w-7xl bg-gradient-to-b from-[#000000] to-[#111111] border-2 border-[#111111] mx-4 md:mx-auto md:pl-4 sm:pl-6 lg:pl-8 w-full overflow-hidden rounded-2xl">
                 <div className="flex flex-col-reverse md:flex-row justify-between gap-8 lg:gap-16 items-center">
                     {/* Left Content */}
                     <div className="space-y-8 px-3 py-12 md:py-0">
@@ -61,7 +64,8 @@ const CTA = () => {
                         />
                     </div>
                 </div>
-            </div>
+
+            </AnimatedBox>
         </section>
     );
 };

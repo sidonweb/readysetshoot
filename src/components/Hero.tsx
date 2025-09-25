@@ -4,8 +4,13 @@ import Navbar from './ui/Navbar'
 import Particles from './ui/Particles'
 import AnimatedCount from './ui/AnimateCount';
 import StarBorder from './ui/StarBorder';
+import BlurText from './ui/BlurText';
+import AnimatedBox from './ui/AnimatedBox';
 
 const Hero = () => {
+    const handleAnimationComplete = () => {
+        console.log('Animation completed!');
+    };
     return (
         <div className="relative h-screen">
             <style>{`
@@ -64,30 +69,42 @@ const Hero = () => {
                 </div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 md:px-0 gap-4 syne  mb-4">
-                    <StarBorder
-                        className=""
-                        color="#5A00FF"
-                        speed="5s"
-                    >
-                        <AnimatedCount
-                            from={0}
-                            to={1000}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text" />+ Shots Planned and Counting...
-                    </StarBorder>
+                    <AnimatedBox>
+                        <StarBorder
+                            className=""
+                            color="#5A00FF"
+                            speed="5s"
+                        >
+                            <AnimatedCount
+                                from={0}
+                                to={1000}
+                                separator=","
+                                direction="up"
+                                duration={1}
+                                className="count-up-text" />+ Shots Planned and Counting...
+                        </StarBorder>
+                    </AnimatedBox>
 
-                    <h1 className="text-4xl md:text-5xl mb-4 text-center md:leading-[1.15] font-medium">
-                        Only app you need <br className='hidden md:block' /> for the perfect shot
+                    <h1 className=" flex justify-center items-center">
+                        <BlurText
+                            text="Only app you need for the perfect shot"
+                            delay={150}
+                            animateBy="words"
+                            direction="top"
+                            onAnimationComplete={handleAnimationComplete}
+                            className="text-4xl md:text-5xl mb-4 text-center md:leading-[1.15] font-medium md:max-w-4/7"
+                        />
+
                         {/* <span className="bg-gradient-to-r from-[#B800FF] via-[#FF6B00] to-[#FF2DCB] bg-clip-text text-transparent">
                            {" "} The Perfect Shot.
                         </span> */}
                     </h1>
-                    <p className="heptaslab max-w-3xl md:text-lg mb-6 text-center text-[#C1C1C1] ">
-                        All the information you need beautifully organized in a clean, focused UI. Everything you need is finally in the right place.
-                    </p>
-                    <div className="flex flex-col md:flex-row gap-4 text-base w-full md:w-auto justify-center items-center">
+                    <AnimatedBox>
+                        <p className="heptaslab max-w-3xl md:text-lg mb-6 text-center text-[#C1C1C1] ">
+                            All the information you need beautifully organized in a clean, focused UI. Everything you need is finally in the right place.
+                        </p>
+                    </AnimatedBox>
+                    <AnimatedBox className="flex flex-col md:flex-row gap-4 text-base w-full md:w-auto justify-center items-center">
 
                         <button className="border-2 border-[#222222] group relative inline-flex h-[calc(48px+8px)] items-center justify-center rounded-full bg-[#060606] py-1 pr-5 pl-14 font-medium text-neutral-50">
                             <div className="absolute left-[3px] inline-flex h-12 w-12 items-center justify-start rounded-full bg-[#5A00FF] transition-[width] group-hover:w-[calc(100%-6px)]">
@@ -127,7 +144,7 @@ const Hero = () => {
                             </svg>
                             Download for Android
                         </button> */}
-                    </div>
+                    </AnimatedBox>
                 </div>
 
             </section>

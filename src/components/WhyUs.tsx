@@ -1,5 +1,6 @@
 import React from 'react';
 import iphone from "/iPhone FAQ.png"
+import AnimatedBox from './ui/AnimatedBox';
 
 const WhyUs: React.FC = () => {
     return (
@@ -24,14 +25,15 @@ const WhyUs: React.FC = () => {
                 {/* Right side - Content */}
                 <div className="flex-1 md:max-w-xl space-y-6 lg:space-y-12 text-center md:text-left">
 
-                    <h1 className="text-left text-3xl md:text-4xl mb-20">
-                        <span className="text-[#FF6B2C]">Why We Built</span>{' '}
-                        <span className="text-white">ReadySetShoot</span>
-                    </h1>
-
-                    <div className="space-y-4 lg:space-y-6 text-base text-white text-justify">
+                    <AnimatedBox>
+                        <h2 className="text-left text-3xl md:text-4xl mb-20">
+                            <span className="text-[#FF6B2C]">Why We Built</span>{' '}
+                            <span className="text-white">ReadySetShoot</span>
+                        </h2>
+                    </AnimatedBox>
+                    <AnimatedBox className="space-y-4 lg:space-y-6 text-base text-white text-justify">
                         <p>
-                                Great shots depend on timing, light, and conditions but most planning tools only scratch the surface.
+                            Great shots depend on timing, light, and conditions but most planning tools only scratch the surface.
                         </p>
 
                         <p>
@@ -45,7 +47,7 @@ const WhyUs: React.FC = () => {
                         <p>
                             Instead of data overload, you get clear, shoot-specific guidance. So when nature delivers, you know exactly when to press the shutter.
                         </p>
-                    </div>
+                    </AnimatedBox>
                 </div>
 
                 <div className="hidden md:flex flex-shrink-0 max-w-[240px] relative">

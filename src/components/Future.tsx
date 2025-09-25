@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedBox from './ui/AnimatedBox';
 
 const Future: React.FC = () => {
   const features = [
@@ -50,17 +51,17 @@ const Future: React.FC = () => {
     <div className=" bg-black text-white py-20 md:py-32 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
-        <div className="md:text-center mb-16">
+        <AnimatedBox className="md:text-center mb-16">
           <h1 className="text-3xl md:text-4xl mb-6">
             <span className="text-orange-500">Upcoming</span> Features
           </h1>
           <p className="text-[#CFCFCF] text-base max-w-6xl mx-auto leading-relaxed">
             We're building more than just a photography tool. What we build next depends on what you tell us matters most.
           </p>
-        </div>
+        </AnimatedBox>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-12">
+        <AnimatedBox className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-12">
           {features.map((feature, index) => (
             <div key={index} className={`cursor-target flex flex-col justify-between items-start gap-6 p-4 md:p-6 bg-gradient-to-b ${feature.title == "You Decide What's Next" ? "from-[#5A00FF] to-[#7F39FF]" : "from-[#000000] to-[#111111]"}  rounded-2xl border border-[#111111]`}>
               {/* Icon */}
@@ -74,7 +75,7 @@ const Future: React.FC = () => {
               </h3>
             </div>
           ))}
-        </div>
+        </AnimatedBox>
       </div>
     </div>
   );

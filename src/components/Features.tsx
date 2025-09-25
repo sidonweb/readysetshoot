@@ -40,6 +40,8 @@
 //   },
 // ];
 
+import AnimatedBox from "./ui/AnimatedBox"
+
 // const Features = () => {
 //   return (
 //     <section
@@ -145,20 +147,20 @@ const Features = () => {
 
 
   return (
-    <section id="features" className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4 reveal scroll-mt-nav">
+    <section id="features" className="bg-gradient-to-r from-[#5A00FF] to-[#7F39FF] text-white py-20 md:py-32 px-4">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Header */}
-        <div className="md:text-center mb-24 md:mb-32">
-          <h2 className="text-3xl md:text-4xl mb-6">
+        <AnimatedBox className="md:text-center mb-24 md:mb-32">
+          <h2 className="text-3xl md:text-4xl leading-tight mb-6">
             Every <span className="text-[#FF6B2C]">Great Shot</span> Starts Here
           </h2>
           <p className=" text-[#CFCFCF] text-lg max-w-4xl mx-auto">
             Skip the hills and trial and feel focused app designed to back every shoot with real insight.
           </p>
-        </div>
+        </AnimatedBox>
 
         {/* Desktop Features Grid */}
-        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <AnimatedBox className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {features.map((feature, index) => (
             <div key={index} className="cursor-target bg-gradient-to-b from-[#0D0D0D] to-[#111111] border border-[#8A4AFF] rounded-2xl p-6 max-w-sm shadow-lg flex flex-col items-start">
               <div className="w-10 h-10 flex items-center justify-center mb-4">
@@ -172,8 +174,8 @@ const Features = () => {
               </p>
             </div>
           ))}
-        </div>
-        
+        </AnimatedBox>
+
         {/* Mobile Horizontal Scroll */}
         <div className="block md:hidden w-11/12">
           <div className="flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar">
@@ -195,7 +197,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-      
+
       <style>{`
         .hide-scrollbar {
           -ms-overflow-style: none;  /* IE and Edge */

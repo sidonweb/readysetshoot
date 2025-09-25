@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import AnimateCount from './ui/AnimateCount';
+import AnimatedBox from './ui/AnimatedBox';
 
 interface Testimonial {
     id: number;
@@ -74,7 +75,7 @@ const Testimonials: React.FC = () => {
     };
 
     const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-        <div 
+        <div
             className="cursor-target flex flex-col justify-between w-80 bg-[#0E0F11] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-[#5A00FF]"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -95,27 +96,28 @@ const Testimonials: React.FC = () => {
 
 
     return (
-        <section id='testimonials' className="bg-black py-20 md:py-32 px-4 overflow-hidden reveal scroll-mt-nav">
+        <section id='testimonials' className="bg-black py-20 md:py-32 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="md:text-center mb-20 md:mb-32">
+                <AnimatedBox className="md:text-center mb-20 md:mb-32">
                     <h2 className="text-3xl md:text-4xl text-white mb-4 unbounded">
                         Why <span className="text-[#FF6B2C]">They Use</span> ReadySetShoot
                     </h2>
-                    <p className="text-[#CFCFCF] md:text-lg max-w-4xl mx-auto">
-                        Real feedback from the photographers who rely on us to get the shot.
-                    </p>
-                </div>
+                    <AnimatedBox>
+                        <p className="text-[#CFCFCF] md:text-lg max-w-4xl mx-auto">
+                            Real feedback from the photographers who rely on us to get the shot.
+                        </p>
+                    </AnimatedBox>
+                </AnimatedBox>
 
                 {/* Scrolling Testimonials */}
-                <div className="relative">
-                    Gradient overlays
+                <AnimatedBox className="relative">
                     <div className="absolute left-0 top-0 bottom-0 w-10 md:w-22 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
                     <div className="absolute right-0 top-0 bottom-0 w-10 md:w-22 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
                     {/* Scrolling container */}
                     <div className="overflow-hidden">
-                        <div 
+                        <div
                             className={`flex testimonial-scroll ${isPaused ? 'paused' : ''}`}
                         >
                             {tripleTestimonials.map((testimonial, index) => (
@@ -126,10 +128,10 @@ const Testimonials: React.FC = () => {
                             ))}
                         </div>
                     </div>
-                </div>
+                </AnimatedBox>
 
                 {/* Footer */}
-                <div className="text-center mt-12">
+                <AnimatedBox className="text-center mt-12">
                     <div className="inline-flex items-center bg-[#0E0F11] rounded-md px-6 py-3 border border-[#1B1D1F]">
                         <svg viewBox="0 0 28 28" fill="none" className='mr-3 h-10 w-10 md:h-5 md:w-5' xmlns="http://www.w3.org/2000/svg">
                             <rect width="28" height="28" rx="14" fill="#FF4500" />
@@ -154,7 +156,7 @@ const Testimonials: React.FC = () => {
                             </span>
                         </span>
                     </div>
-                </div>
+                </AnimatedBox>
             </div>
 
             <style>{`

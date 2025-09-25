@@ -1,4 +1,5 @@
 import React, { type JSX, useState } from 'react';
+import AnimatedBox from './ui/AnimatedBox';
 
 type FeatureMode = 'sunrise' | 'sunset' | 'astro';
 
@@ -131,7 +132,7 @@ const Toggles: React.FC = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col gap-16 md:gap-24  items-center">
                     {/* Navigation Tabs */}
-                    <div className="flex flex-row justify-evenly items-center w-full max-w-6xl">
+                    <AnimatedBox className="flex flex-row justify-evenly items-center w-full max-w-6xl">
                         {Object.entries(featureContent).map(([key, content]) => (
                             <button
                                 key={key}
@@ -144,8 +145,8 @@ const Toggles: React.FC = () => {
                                 {content.title}
                             </button>
                         ))}
-                    </div>
-                    <div className="flex flex-col-reverse md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
+                    </AnimatedBox>
+                    <AnimatedBox className="flex flex-col-reverse md:flex-row gap-22 items-center justify-between w-full max-w-6xl">
                         {/* Feature List */}
                         <div className="space-y-12">
                             {currentContent.items.map((item, index) => (
@@ -161,7 +162,7 @@ const Toggles: React.FC = () => {
                                         <h4 className="text-[#F5F5F5] font-semibold mb-4 text-xl flex items-center gap-4">{item.icon}{item.title}</h4>
                                         <ul className="">
                                             {item.list.map((listItem, listIndex) => (
-                                                <li className='flex flex-row items-center gap-4' key={`${activeMode}-${index}-${listIndex}`}><div className='w-1 h-1 bg-[#C7C7C7] rounded-full'/>{listItem}</li>
+                                                <li className='flex flex-row items-center gap-4' key={`${activeMode}-${index}-${listIndex}`}><div className='w-1 h-1 bg-[#C7C7C7] rounded-full' />{listItem}</li>
                                             ))}
                                         </ul>
                                     </div>
@@ -172,11 +173,17 @@ const Toggles: React.FC = () => {
                         <div className="flex-1 max-w-md">
                             {/* Content */}
                             <div className="relative z-10">
-                                <img src={currentContent.image} alt={currentContent.title} className="w-full h-auto rounded-2xl" />
+                                <AnimatedBox key={currentContent.image} className="w-full">
+                                    <img
+                                        src={currentContent.image}
+                                        alt={currentContent.title}
+                                        className="w-full h-auto rounded-2xl"
+                                    />
+                                </AnimatedBox>
                             </div>
 
                         </div>
-                    </div>
+                    </AnimatedBox>
                 </div>
             </div>
 

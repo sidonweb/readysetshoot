@@ -3,6 +3,7 @@
 // import CircularGallery from './ui/CircularGallery';
 
 import React, { useState, useEffect } from "react";
+import AnimatedBox from "./ui/AnimatedBox";
 
 const images = [
   { src: "/gallery/Avalon Beach NSW AU.png", alt: "Avalon Beach", location: "NSW, Australia" },
@@ -92,7 +93,7 @@ const Slideshow: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Grid with limited number of images + gallery card */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      <AnimatedBox className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {/* Display limited number of images */}
         {displayedImages.map((img, idx) => (
           <div
@@ -125,28 +126,28 @@ const Slideshow: React.FC = () => {
         >
           <div className="flex flex-col justify-center items-center rounded-2xl  border-2 border-dashed border-[#222222] w-full h-full">
             <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M110.25 66.94C110.25 85.79 110.25 95.22 104.39 101.08C98.53 106.94 89.105 106.94 70.25 106.94H50.25C31.395 106.94 21.965 106.94 16.11 101.08C10.255 95.22 10.25 85.795 10.25 66.94C10.25 48.085 10.25 38.65 16.11 32.795C21.97 26.94 31.395 26.94 50.25 26.94H70.25C89.105 26.94 98.535 26.94 104.39 32.795C107.71 36.115 109.15 40.575 109.77 47.25" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
-<path d="M20.1899 29.75C20.7499 25.095 21.9249 21.88 24.3749 19.435C29.0749 14.75 36.6449 14.75 51.7849 14.75H67.8399C82.9799 14.75 90.5449 14.75 95.2499 19.435C97.6999 21.88 98.8749 25.095 99.4349 29.75" stroke="#F5F5F5" stroke-width="3"/>
-<path d="M87.75 56.94C91.8921 56.94 95.25 53.5821 95.25 49.44C95.25 45.2979 91.8921 41.94 87.75 41.94C83.6079 41.94 80.25 45.2979 80.25 49.44C80.25 53.5821 83.6079 56.94 87.75 56.94Z" stroke="#F5F5F5" stroke-width="3"/>
-<path d="M10.25 69.44L19.01 61.775C21.2057 59.8553 24.0487 58.8417 26.9636 58.9391C29.8785 59.0366 32.6475 60.238 34.71 62.3L56.16 83.75C57.8252 85.4134 60.0237 86.4362 62.3687 86.6383C64.7136 86.8405 67.0548 86.209 68.98 84.855L70.475 83.805C73.2535 81.8546 76.6115 80.9044 80 81.1096C83.3885 81.3149 86.6072 82.6635 89.13 84.935L105.25 99.435" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
-</svg>
+              <path d="M110.25 66.94C110.25 85.79 110.25 95.22 104.39 101.08C98.53 106.94 89.105 106.94 70.25 106.94H50.25C31.395 106.94 21.965 106.94 16.11 101.08C10.255 95.22 10.25 85.795 10.25 66.94C10.25 48.085 10.25 38.65 16.11 32.795C21.97 26.94 31.395 26.94 50.25 26.94H70.25C89.105 26.94 98.535 26.94 104.39 32.795C107.71 36.115 109.15 40.575 109.77 47.25" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
+              <path d="M20.1899 29.75C20.7499 25.095 21.9249 21.88 24.3749 19.435C29.0749 14.75 36.6449 14.75 51.7849 14.75H67.8399C82.9799 14.75 90.5449 14.75 95.2499 19.435C97.6999 21.88 98.8749 25.095 99.4349 29.75" stroke="#F5F5F5" stroke-width="3"/>
+              <path d="M87.75 56.94C91.8921 56.94 95.25 53.5821 95.25 49.44C95.25 45.2979 91.8921 41.94 87.75 41.94C83.6079 41.94 80.25 45.2979 80.25 49.44C80.25 53.5821 83.6079 56.94 87.75 56.94Z" stroke="#F5F5F5" stroke-width="3"/>
+              <path d="M10.25 69.44L19.01 61.775C21.2057 59.8553 24.0487 58.8417 26.9636 58.9391C29.8785 59.0366 32.6475 60.238 34.71 62.3L56.16 83.75C57.8252 85.4134 60.0237 86.4362 62.3687 86.6383C64.7136 86.8405 67.0548 86.209 68.98 84.855L70.475 83.805C73.2535 81.8546 76.6115 80.9044 80 81.1096C83.3885 81.3149 86.6072 82.6635 89.13 84.935L105.25 99.435" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
+            </svg>
 
             <p className="text-[#F5F5F5] text-xl mt-4 unbounded">
               View All Photos
             </p>
           </div>
         </div>
-      </div>
+      </AnimatedBox>
 
       {/* Modal for detailed view */}
       {isModalOpen && (
         <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4 md:p-8" onClick={closeModal}>
-  <div className="relative w-full max-w-4xl h-[80vh] md:h-[70vh]" onClick={(e) => e.stopPropagation()}>
-    {/* Close button */}
-    <button 
-      className="cursor-target absolute top-4 md:top-6 right-4 md:right-6 text-white text-3xl backdrop-blur-xs bg-black/20 rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
-      onClick={closeModal}
-    >
+        <div className="relative w-full max-w-4xl h-[80vh] md:h-[70vh]" onClick={(e) => e.stopPropagation()}>
+          {/* Close button */}
+      <button 
+        className="cursor-target absolute top-4 md:top-6 right-4 md:right-6 text-white text-3xl backdrop-blur-xs bg-black/20 rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+        onClick={closeModal}
+      >
       &times;
     </button>
     

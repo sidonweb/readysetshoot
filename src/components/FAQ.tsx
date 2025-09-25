@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import AnimatedBox from './ui/AnimatedBox';
 
 const FAQ = () => {
     const [openItem, setOpenItem] = useState(null);
@@ -42,29 +43,30 @@ const FAQ = () => {
     };
 
     return (
-        <section id='faqs' className=" bg-black text-white py-20 md:py-32 px-4 reveal scroll-mt-nav">
+        <section id='faqs' className=" bg-black text-white py-20 md:py-32 px-4">
             <div className="flex flex-col md:flex-row items-start justify-center">
                 <div className="w-full px-2 md:px-24">
-                    <div className="mb-12">
-                        <h1 className="text-3xl md:text-4xl leading-tight">
+                    <AnimatedBox className="mb-12">
+
+                        <h2 className="text-3xl md:text-4xl leading-tight">
                             Questions → <span className="text-orange-500">Answers</span>
-                        </h1>
-                    </div>
+                        </h2>
+                    </AnimatedBox>
 
                     <div className="space-y-2">
                         {faqData.map((item) => (
-                            <div
+                            <AnimatedBox
                                 key={item.id}
                                 className={`transition-all duration-300 ease-in-out ${openItem === item.id
-                                        ? 'bg-[#0E0F11]  rounded-lg border-b border-transparent'
-                                        : 'border-b border-gray-800 rounded-lg'
+                                    ? 'bg-[#0E0F11]  rounded-lg border-b border-transparent'
+                                    : 'border-b border-gray-800 rounded-lg'
                                     }`}
                             >
                                 <button
                                     onClick={() => toggleItem(item.id)}
                                     className={`w-full py-6 flex items-center justify-between text-left transition-all duration-300 ease-in-out ${openItem === item.id
-                                            ? "bg-[#0E0F11] px-4 rounded-lg"
-                                            : "cursor-pointer"
+                                        ? "bg-[#0E0F11] px-4 rounded-lg"
+                                        : "cursor-pointer"
                                         }`}
                                 >
                                     <span
@@ -83,15 +85,15 @@ const FAQ = () => {
                                 {/* Answer container with smooth height transition */}
                                 <div
                                     className={`overflow-hidden transition-all duration-500 ease-in-out ${openItem === item.id
-                                            ? 'max-h-96 opacity-100'
-                                            : 'max-h-0 opacity-0'
+                                        ? 'max-h-96 opacity-100'
+                                        : 'max-h-0 opacity-0'
                                         }`}
                                 >
                                     <div className="px-4 pb-6 pt-2 text-gray-300 leading-relaxed">
                                         {item.answer}
                                     </div>
                                 </div>
-                            </div>
+                            </AnimatedBox>
                         ))}
                     </div>
                 </div>
