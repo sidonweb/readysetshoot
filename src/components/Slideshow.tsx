@@ -6,25 +6,28 @@ import React, { useState, useEffect } from "react";
 import AnimatedBox from "./ui/AnimatedBox";
 
 const images = [
-  { src: "/gallery/Avalon Beach NSW AU.png", alt: "Avalon Beach", location: "NSW, Australia" },
-  { src: "/gallery/Bronte Beach NSW AU.png", alt: "Bronte Beach", location: "NSW, Australia" },
-  { src: "/gallery/Cathedral Rocks NSW AU.png", alt: "Cathedral Rocks", location: "NSW, Australia" },
-  { src: "/gallery/Comet C_2024 G3.png", alt: "Comet C/2024 G3", location: "Night Sky" },
-  { src: "/gallery/Gardens By The Bay SG.png", alt: "Gardens By The Bay", location: "Singapore" },
-  { src: "/gallery/IC4604 - Rho.png", alt: "IC4604 - Rho", location: "Deep Space" },
-  { src: "/gallery/Iceland.png", alt: "Iceland Landscape", location: "Iceland" },
-  { src: "/gallery/Maroubra Mahon Pool NSW AU.png", alt: "Maroubra Mahon Pool", location: "NSW, Australia" },
-  { src: "/gallery/Milford Sound NZ.png", alt: "Milford Sound", location: "New Zealand" },
+  { src: "/gallery/20250215 Carinae v2.jpg", alt: "Carinae Nebula", location: "Deep Space" },
+  { src: "/gallery/Armidale NSW AU.jpg", alt: "Armidale", location: "NSW, Australia" },
+  { src: "/gallery/Gardens By The Bay SG.jpg", alt: "Gardens By The Bay", location: "Singapore" },
+  { src: "/gallery/Mt Cook NZ.jpg", alt: "Mt Cook", location: "New Zealand" },
+  { src: "/gallery/Avalon Beach NSW AU.jpg", alt: "Avalon Beach", location: "NSW, Australia" },
+  { src: "/gallery/Bronte Beach NSW AU.jpg", alt: "Bronte Beach", location: "NSW, Australia" },
+  { src: "/gallery/Cathedral Rocks NSW AU.jpg", alt: "Cathedral Rocks", location: "NSW, Australia" },
+  { src: "/gallery/Comet C_2024 G3.jpg", alt: "Comet C/2024 G3", location: "Night Sky" },
+  { src: "/gallery/Gardens By The Bay SG.jpg", alt: "Gardens By The Bay", location: "Singapore" },
+  { src: "/gallery/IC4604 - Rho.jpg", alt: "IC4604 - Rho", location: "Deep Space" },
+  { src: "/gallery/Maroubra Mahon Pool NSW AU.jpg", alt: "Maroubra Mahon Pool", location: "NSW, Australia" },
+  { src: "/gallery/Milford Sound NZ.jpg", alt: "Milford Sound", location: "New Zealand" },
   { src: "/gallery/Mitchell Ridge Lookout NSW AU.jpg", alt: "Mitchell Ridge Lookout", location: "NSW, Australia" },
-  { src: "/gallery/Mona Vale Ocean Pool NSW AUpng.png", alt: "Mona Vale Ocean Pool", location: "NSW, Australia" },
-  { src: "/gallery/Mt Cook NZ.png", alt: "Mt Cook", location: "New Zealand" },
+  { src: "/gallery/Mona Vale Ocean Pool NSW AU.jpg", alt: "Mona Vale Ocean Pool", location: "NSW, Australia" },
+  { src: "/gallery/Mt Cook NZ.jpg", alt: "Mt Cook", location: "New Zealand" },
+  { src: "/gallery/Narrebeen Ocean Pool NSW AU.jpg", alt: "Narrebeen Ocean Pool", location: "NSW, Australia" },
   { src: "/gallery/NGC6188 - The Dragons of Ara.jpg", alt: "NGC6188 - The Dragons of Ara", location: "Deep Space" },
-  { src: "/gallery/Narrebeen Ocean Pool NSW AU.png", alt: "Narrebeen Ocean Pool", location: "NSW, Australia" },
-  { src: "/gallery/North Curl Curl NSW AU.png", alt: "North Curl Curl", location: "NSW, Australia" },
-  { src: "/gallery/South Island NZ.png", alt: "South Island", location: "New Zealand" },
-  { src: "/gallery/Wanaka Tree NZ.png", alt: "Wanaka Tree", location: "New Zealand" },
-  { src: "/gallery/20250215 Carinae v2.png", alt: "Carinae Nebula", location: "Deep Space" }
+  { src: "/gallery/North Curl Curl NSW AU.jpg", alt: "North Curl Curl", location: "NSW, Australia" },
+  { src: "/gallery/South Island NZ.jpg", alt: "South Island", location: "New Zealand" },
+  { src: "/gallery/Wanaka Tree NZ.jpg", alt: "Wanaka Tree", location: "New Zealand" }
 ];
+
 
 const Slideshow: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

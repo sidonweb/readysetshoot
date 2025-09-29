@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import AnimateCount from './ui/AnimateCount';
 import AnimatedBox from './ui/AnimatedBox';
@@ -13,6 +13,15 @@ interface Testimonial {
 
 const Testimonials: React.FC = () => {
     const [isPaused, setIsPaused] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragStartX, setDragStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [currentTranslateX, setCurrentTranslateX] = useState(0);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    // @ts-ignore
+    const animationRef = useRef<number>();
+    const startTimeRef = useRef<number>(0);
+    const pausedAtRef = useRef<number>(0);
 
     const testimonials: Testimonial[] = [
         {
@@ -61,6 +70,105 @@ const Testimonials: React.FC = () => {
 
     // Triple the testimonials for seamless infinite scroll
     const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
+    const cardWidth = 336; // 320px width + 16px margin
+    const totalWidth = testimonials.length * cardWidth;
+
+    // Animation logic
+    useEffect(() => {
+        if (!isDragging && !isPaused) {
+            const animate = (timestamp: number) => {
+                if (!startTimeRef.current) {
+                    startTimeRef.current = timestamp - pausedAtRef.current;
+                }
+                
+                const elapsed = timestamp - startTimeRef.current;
+                const progress = (elapsed / 45000) % 1; // 45 seconds for full cycle
+                const translateX = -progress * totalWidth;
+                
+                setCurrentTranslateX(translateX);
+                animationRef.current = requestAnimationFrame(animate);
+            };
+            
+            animationRef.current = requestAnimationFrame(animate);
+        }
+        
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [isDragging, isPaused, totalWidth]);
+
+    // Store paused position when stopping animation
+    useEffect(() => {
+        if (isDragging || isPaused) {
+            pausedAtRef.current = -currentTranslateX / totalWidth * 45000;
+            startTimeRef.current = 0;
+        }
+    }, [isDragging, isPaused, currentTranslateX, totalWidth]);
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        setIsDragging(true);
+        setDragStartX(e.pageX);
+        setScrollLeft(currentTranslateX);
+        e.preventDefault();
+    };
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        setIsDragging(true);
+        setDragStartX(e.touches[0].pageX);
+        setScrollLeft(currentTranslateX);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX;
+        const walk = x - dragStartX;
+        let newTranslateX = scrollLeft + walk;
+        
+        // Wrap around logic for infinite scroll
+        if (newTranslateX > 0) {
+            newTranslateX = newTranslateX - totalWidth;
+        } else if (newTranslateX < -totalWidth * 2) {
+            newTranslateX = newTranslateX + totalWidth;
+        }
+        
+        setCurrentTranslateX(newTranslateX);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX;
+        const walk = x - dragStartX;
+        let newTranslateX = scrollLeft + walk;
+        
+        // Wrap around logic for infinite scroll
+        if (newTranslateX > 0) {
+            newTranslateX = newTranslateX - totalWidth;
+        } else if (newTranslateX < -totalWidth * 2) {
+            newTranslateX = newTranslateX + totalWidth;
+        }
+        
+        setCurrentTranslateX(newTranslateX);
+    };
+
+    const handleMouseUp = () => {
+        if (isDragging) {
+            setIsDragging(false);
+            // Normalize position for smooth transition back to animation
+            let normalized = currentTranslateX % totalWidth;
+            if (normalized > 0) normalized -= totalWidth;
+            setCurrentTranslateX(normalized);
+            pausedAtRef.current = -normalized / totalWidth * 45000;
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (isDragging) {
+            handleMouseUp();
+        }
+    };
 
     const renderStars = (rating: number) => {
         return Array.from({ length: 5 }, (_, index) => (
@@ -76,7 +184,7 @@ const Testimonials: React.FC = () => {
 
     const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
         <div
-            className="cursor-target flex flex-col justify-between w-80 bg-[#0E0F11] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-[#5A00FF]"
+            className="cursor-target flex flex-col justify-between w-80 bg-[#0E0F11] rounded-2xl p-6 m-4 border border-[#1B1D1F] transition-transform duration-300 hover:border-[#5A00FF] select-none"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
@@ -93,7 +201,6 @@ const Testimonials: React.FC = () => {
             </div>
         </div>
     );
-
 
     return (
         <section id='testimonials' className="bg-black py-20 md:py-32 px-4 overflow-hidden">
@@ -116,9 +223,28 @@ const Testimonials: React.FC = () => {
                     <div className="absolute right-0 top-0 bottom-0 w-10 md:w-22 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
 
                     {/* Scrolling container */}
-                    <div className="overflow-hidden">
+                    <div 
+                        ref={scrollContainerRef}
+                        className="overflow-hidden"
+                        onMouseDown={handleMouseDown}
+                        onMouseMove={handleMouseMove}
+                        onMouseUp={handleMouseUp}
+                        onMouseLeave={handleMouseLeave}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleMouseUp}
+                        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+                    >
                         <div
-                            className={`flex testimonial-scroll ${isPaused ? 'paused' : ''}`}
+                            className="flex"
+                            style={{
+                                transform: `translateX(${currentTranslateX}px)`,
+                                transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+                                width: `${tripleTestimonials.length * cardWidth}px`,
+                                willChange: 'transform',
+                                backfaceVisibility: 'hidden',
+                                perspective: '1000px'
+                            }}
                         >
                             {tripleTestimonials.map((testimonial, index) => (
                                 <TestimonialCard
@@ -158,42 +284,6 @@ const Testimonials: React.FC = () => {
                     </div>
                 </AnimatedBox>
             </div>
-
-            <style>{`
-                @keyframes testimonialScroll {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    100% {
-                        transform: translateX(-${testimonials.length * 336}px);
-                    }
-                }
-
-                .testimonial-scroll {
-                    animation: testimonialScroll 45s linear infinite;
-                    width: ${tripleTestimonials.length * 336}px;
-                }
-
-                .testimonial-scroll.paused {
-                    animation-play-state: paused;
-                }
-
-                .testimonial-scroll:hover {
-                    animation-play-state: paused;
-                }
-
-                /* Smooth performance optimizations */
-                .testimonial-scroll {
-                    will-change: transform;
-                    backface-visibility: hidden;
-                    perspective: 1000px;
-                }
-
-                /* Ensure seamless loop by making sure we have exact positioning */
-                .testimonial-scroll > div:nth-child(${testimonials.length + 1}) {
-                    animation-delay: 0s;
-                }
-            `}</style>
         </section>
     );
 };
