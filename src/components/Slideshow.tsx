@@ -2,10 +2,16 @@
 // import { ChevronLeft, ChevronRight } from 'lucide-react';
 // import CircularGallery from './ui/CircularGallery';
 
-import React, { useState, useEffect } from "react";
-import AnimatedBox from "./ui/AnimatedBox";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-const images = [
+// 1. Define the type for an Image object
+interface Image {
+  src: string;
+  alt: string;
+  location: string;
+}
+
+const images: Image[] = [
   { src: "/gallery/20250215 Carinae v2.jpg", alt: "Carinae Nebula", location: "Deep Space" },
   { src: "/gallery/Armidale NSW AU.jpg", alt: "Armidale", location: "NSW, Australia" },
   { src: "/gallery/Gardens By The Bay SG.jpg", alt: "Gardens By The Bay", location: "Singapore" },
@@ -28,28 +34,79 @@ const images = [
   { src: "/gallery/Wanaka Tree NZ.jpg", alt: "Wanaka Tree", location: "New Zealand" }
 ];
 
+// Define animation durations for closing logic
+const MODAL_ANIMATION_DURATION = 300; // Corresponds to 0.3s
+const BACKDROP_ANIMATION_DURATION = 200; // Corresponds to 0.2s
+
+// 2. Add closing animations to styles
+const styles = `
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes scaleOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+`;
+
+type ImageDirection = 'right' | 'left' | null;
 
 const Slideshow: React.FC = () => {
+  // 3. Use explicit types for state variables
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [displayedImages, setDisplayedImages] = useState(images.slice(0, 5));
+  const [isClosing, setIsClosing] = useState(false); // State for closing animation
+  const [displayedImages, setDisplayedImages] = useState<Image[]>(images.slice(0, 5));
   const [isMobile, setIsMobile] = useState(false);
+  const [imageDirection, setImageDirection] = useState<ImageDirection>(null);
 
-  // Check if device is mobile
+  // Inject styles (no change needed here, useEffect is fine)
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = styles;
+    if (!document.head.querySelector('style[data-slideshow-animations]')) {
+      styleElement.setAttribute('data-slideshow-animations', 'true');
+      document.head.appendChild(styleElement);
+    }
+  }, []);
+
+  // Check if device is mobile (no change needed)
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkIsMobile();
     window.addEventListener('resize', checkIsMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkIsMobile);
     };
   }, []);
 
-  // Update displayed images based on screen size
+  // Update displayed images based on screen size (no change needed)
   useEffect(() => {
     if (isMobile) {
       setDisplayedImages(images.slice(0, 3));
@@ -60,156 +117,272 @@ const Slideshow: React.FC = () => {
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
+    // Only manage overflow when the modal is open or closing
     if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+        document.body.style.overflow = 'unset';
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+        document.body.style.overflow = 'unset';
     };
   }, [isModalOpen]);
 
+
+  // 4. Properly type openModal and closeModal
   const openModal = (index: number | null = null) => {
     if (index !== null) {
       setActiveIndex(index);
     }
+    setIsClosing(false); // Ensure closing state is false when opening
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setActiveIndex(null);
-  };
-
-  const navigateImage = (direction: 'prev' | 'next') => {
-    if (activeIndex === null) return;
+  const closeModal = useCallback(() => {
+    // Start the closing animation
+    setIsClosing(true);
     
+    // Wait for the animation to finish before truly closing the modal
+    // We use the longer duration of the two animations (modal scaleOut and backdrop fadeOut)
+    setTimeout(() => {
+        setIsModalOpen(false);
+        setActiveIndex(null);
+        setIsClosing(false);
+    }, MODAL_ANIMATION_DURATION);
+  }, []);
+
+  // Handle keyboard events (ESC key) for closing
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (isModalOpen && !isClosing && event.key === 'Escape') {
+        closeModal();
+      }
+    };
+    
+    document.addEventListener('keydown', handleKeydown);
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+    };
+  }, [isModalOpen, isClosing, closeModal]); // Depend on isModalOpen and closeModal
+
+  // 5. Properly type navigateImage and remove @ts-ignore
+  const navigateImage = (direction: 'next' | 'prev') => {
+    if (activeIndex === null) return;
+
+    // Set the direction for the image transition animation
+    setImageDirection(direction === 'next' ? 'right' : 'left');
+
+    let newIndex: number;
     if (direction === 'next') {
-      setActiveIndex((activeIndex + 1) % images.length);
+      newIndex = (activeIndex + 1) % images.length;
     } else {
-      setActiveIndex((activeIndex - 1 + images.length) % images.length);
+      newIndex = (activeIndex - 1 + images.length) % images.length;
     }
+
+    setActiveIndex(newIndex);
+
+    // Reset direction after animation (must match slideInRight/Left duration, e.g., 300ms)
+    setTimeout(() => setImageDirection(null), 300);
   };
 
+  // Determine which image to display in the modal
+  const currentImage = useMemo(() => 
+    activeIndex !== null ? images[activeIndex] : images[0]
+  , [activeIndex]);
+
+  // Only render the Modal wrapper when it's open OR closing
+  if (!isModalOpen && !isClosing) {
+    return (
+      <div className="max-w-7xl mx-auto">
+        {/* Grid with limited number of images + gallery card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          {/* Display limited number of images */}
+          {displayedImages.map((img, idx) => (
+            <div
+              key={idx}
+              onClick={() => openModal(idx)}
+              className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center cursor-target"
+            >
+              <div className="overflow-hidden w-full">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-64 object-cover rounded-2xl border border-[#222222] "
+                />
+                <div className="text-start pt-4">
+                  <p className="text-[#F5F5F5] text-lg leading-relaxed unbounded">
+                    {img.alt}
+                  </p>
+                  <p className="text-[#F5F5F5] text-sm leading-relaxed font-light">
+                    {img.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Gallery card */}
+          <div
+            onClick={() => openModal(0)}
+            className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center justify-center cursor-target min-h-[300px]"
+          >
+            <div className="flex flex-col justify-center items-center rounded-2xl border-2 border-dashed border-[#222222] w-full h-full">
+              <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M110.25 66.94C110.25 85.79 110.25 95.22 104.39 101.08C98.53 106.94 89.105 106.94 70.25 106.94H50.25C31.395 106.94 21.965 106.94 16.11 101.08C10.255 95.22 10.25 85.795 10.25 66.94C10.25 48.085 10.25 38.65 16.11 32.795C21.97 26.94 31.395 26.94 50.25 26.94H70.25C89.105 26.94 98.535 26.94 104.39 32.795C107.71 36.115 109.15 40.575 109.77 47.25" stroke="#F5F5F5" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M20.1899 29.75C20.7499 25.095 21.9249 21.88 24.3749 19.435C29.0749 14.75 36.6449 14.75 51.7849 14.75H67.8399C82.9799 14.75 90.5449 14.75 95.2499 19.435C97.6999 21.88 98.8749 25.095 99.4349 29.75" stroke="#F5F5F5" strokeWidth="3"/>
+                <path d="M87.75 56.94C91.8921 56.94 95.25 53.5821 95.25 49.44C95.25 45.2979 91.8921 41.94 87.75 41.94C83.6079 41.94 80.25 45.2979 80.25 49.44C80.25 53.5821 83.6079 56.94 87.75 56.94Z" stroke="#F5F5F5" strokeWidth="3"/>
+                <path d="M10.25 69.44L19.01 61.775C21.2057 59.8553 24.0487 58.8417 26.9636 58.9391C29.8785 59.0366 32.6475 60.238 34.71 62.3L56.16 83.75C57.8252 85.4134 60.0237 86.4362 62.3687 86.6383C64.7136 86.8405 67.0548 86.209 68.98 84.855L70.475 83.805C73.2535 81.8546 76.6115 80.9044 80 81.1096C83.3885 81.3149 86.6072 82.6635 89.13 84.935L105.25 99.435" stroke="#F5F5F5" strokeWidth="3" strokeLinecap="round"/>
+              </svg>
+
+              <p className="text-[#F5F5F5] text-xl mt-4 unbounded">
+                View All Photos
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Modal for detailed view
   return (
     <div className="max-w-7xl mx-auto">
-      {/* Grid with limited number of images + gallery card */}
-      <AnimatedBox className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        {/* Display limited number of images */}
-        {displayedImages.map((img, idx) => (
-          <div
-            key={idx}
-            onClick={() => openModal(idx)}
-            className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center cursor-target"
+      {/* Grid rendering remains the same... */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          {displayedImages.map((img, idx) => (
+            <div
+              key={idx}
+              onClick={() => openModal(idx)}
+              className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center cursor-target"
+            >
+              <div className="overflow-hidden w-full">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-64 object-cover rounded-2xl border border-[#222222] "
+                />
+                <div className="text-start pt-4">
+                  <p className="text-[#F5F5F5] text-lg leading-relaxed unbounded">
+                    {img.alt}
+                  </p>
+                  <p className="text-[#F5F5F5] text-sm leading-relaxed font-light">
+                    {img.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+           <div
+            onClick={() => openModal(0)}
+            className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center justify-center cursor-target min-h-[300px]"
           >
-            <div className="overflow-hidden w-full">
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-64 object-cover rounded-2xl border border-[#222222] "
-              />
-              <div className="text-start pt-4">
-                <p className="text-[#F5F5F5] text-lg leading-relaxed unbounded">
-                  {img.alt}
+            <div className="flex flex-col justify-center items-center rounded-2xl border-2 border-dashed border-[#222222] w-full h-full">
+              <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M110.25 66.94C110.25 85.79 110.25 95.22 104.39 101.08C98.53 106.94 89.105 106.94 70.25 106.94H50.25C31.395 106.94 21.965 106.94 16.11 101.08C10.255 95.22 10.25 85.795 10.25 66.94C10.25 48.085 10.25 38.65 16.11 32.795C21.97 26.94 31.395 26.94 50.25 26.94H70.25C89.105 26.94 98.535 26.94 104.39 32.795C107.71 36.115 109.15 40.575 109.77 47.25" stroke="#F5F5F5" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M20.1899 29.75C20.7499 25.095 21.9249 21.88 24.3749 19.435C29.0749 14.75 36.6449 14.75 51.7849 14.75H67.8399C82.9799 14.75 90.5449 14.75 95.2499 19.435C97.6999 21.88 98.8749 25.095 99.4349 29.75" stroke="#F5F5F5" strokeWidth="3"/>
+                <path d="M87.75 56.94C91.8921 56.94 95.25 53.5821 95.25 49.44C95.25 45.2979 91.8921 41.94 87.75 41.94C83.6079 41.94 80.25 45.2979 80.25 49.44C80.25 53.5821 83.6079 56.94 87.75 56.94Z" stroke="#F5F5F5" strokeWidth="3"/>
+                <path d="M10.25 69.44L19.01 61.775C21.2057 59.8553 24.0487 58.8417 26.9636 58.9391C29.8785 59.0366 32.6475 60.238 34.71 62.3L56.16 83.75C57.8252 85.4134 60.0237 86.4362 62.3687 86.6383C64.7136 86.8405 67.0548 86.209 68.98 84.855L70.475 83.805C73.2535 81.8546 76.6115 80.9044 80 81.1096C83.3885 81.3149 86.6072 82.6635 89.13 84.935L105.25 99.435" stroke="#F5F5F5" strokeWidth="3" strokeLinecap="round"/>
+              </svg>
+
+              <p className="text-[#F5F5F5] text-xl mt-4 unbounded">
+                View All Photos
+              </p>
+            </div>
+          </div>
+      </div>
+
+      {/* Modal for detailed view */}
+      {(isModalOpen || isClosing) && (
+        <div
+          className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4 md:p-8"
+          onClick={closeModal}
+          style={{
+            // Apply fadeOut animation when closing
+            animation: isClosing 
+              ? `fadeOut ${BACKDROP_ANIMATION_DURATION}ms ease-in forwards` 
+              : `fadeIn ${BACKDROP_ANIMATION_DURATION}ms ease-out`
+          }}
+        >
+          <div
+            className="relative w-full max-w-4xl h-[80vh] md:h-[70vh]"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              // Apply scaleOut animation when closing
+              animation: isClosing 
+                ? `scaleOut ${MODAL_ANIMATION_DURATION}ms ease-in forwards` 
+                : `scaleIn ${MODAL_ANIMATION_DURATION}ms ease-out`
+            }}
+          >
+            {/* Close button */}
+            <button
+              className="cursor-target absolute top-4 md:top-6 right-4 md:right-6 text-white text-3xl backdrop-blur-xs bg-black/20 rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              onClick={closeModal}
+            >
+              &times;
+            </button>
+
+            {/* Navigation buttons */}
+            <button
+              className="rounded-full cursor-target absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-white text-2xl backdrop-blur-xs bg-black/20 w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              onClick={() => navigateImage('prev')}
+            >
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.93051 4.95007H12.4348C12.5847 4.95007 12.7285 5.00801 12.8345 5.11114C12.9405 5.21427 13 5.35415 13 5.5C13 5.64585 12.9405 5.78573 12.8345 5.88886C12.7285 5.99199 12.5847 6.04993 12.4348 6.04993H1.93051L6.05289 10.06C6.15901 10.1633 6.21863 10.3033 6.21863 10.4494C6.21863 10.5954 6.15901 10.7355 6.05289 10.8387C5.94676 10.942 5.80283 11 5.65275 11C5.50266 11 5.35873 10.942 5.2526 10.8387L0.166041 5.88935C0.113409 5.83827 0.0716505 5.77758 0.0431585 5.71077C0.0146666 5.64396 9.53674e-07 5.57233 9.53674e-07 5.5C9.53674e-07 5.42767 0.0146666 5.35604 0.0431585 5.28923C0.0716505 5.22242 0.113409 5.16173 0.166041 5.11065L5.2526 0.161274C5.35873 0.058012 5.50266 0 5.65275 0C5.80283 0 5.94676 0.058012 6.05289 0.161274C6.15901 0.264537 6.21863 0.40459 6.21863 0.550625C6.21863 0.69666 6.15901 0.836714 6.05289 0.939976L1.93051 4.95007Z" fill="white"/>
+              </svg>
+            </button>
+            <button
+              className="rounded-full cursor-target absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-white text-2xl backdrop-blur-xs bg-black/20 w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
+              onClick={() => navigateImage('next')}
+            >
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.0695 4.95007H0.565174C0.41528 4.95007 0.271526 5.00801 0.165536 5.11114C0.059545 5.21427 0 5.35415 0 5.5C0 5.64585 0.059545 5.78573 0.165536 5.88886C0.271526 5.99199 0.41528 6.04993 0.565174 6.04993H11.0695L6.94711 10.06C6.84099 10.1633 6.78137 10.3033 6.78137 10.4494C6.78137 10.5954 6.84099 10.7355 6.94711 10.8387C7.05324 10.942 7.19717 11 7.34726 11C7.49734 11 7.64127 10.942 7.7474 10.8387L12.834 5.88935C12.8866 5.83827 12.9284 5.77758 12.9568 5.71077C12.9853 5.64396 13 5.57233 13 5.5C13 5.42767 12.9853 5.35604 12.9568 5.28923C12.9284 5.22242 12.8866 5.16173 12.834 5.11065L7.7474 0.161274C7.64127 0.058012 7.49734 0 7.34726 0C7.19717 0 7.05324 0.058012 6.94711 0.161274C6.84099 0.264537 6.78137 0.40459 6.78137 0.550625C6.78137 0.69666 6.84099 0.836714 6.94711 0.939976L11.0695 4.95007Z" fill="white"/>
+              </svg>
+            </button>
+
+            <p className="absolute left-4 md:left-6 top-6 md:top-8 transform -translate-y-1/2 text-[#F5F5F5] text-xs leading-relaxed font-light z-10">
+              {"#"}{(activeIndex !== null ? activeIndex : 0) + 1} of {images.length}
+            </p>
+
+            {/* Image as background with text overlay */}
+            <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
+              <div
+                className="relative w-full h-full"
+                key={activeIndex}
+                style={{
+                  animation: imageDirection === 'right' ? 'slideInRight 0.3s ease-out' :
+                             imageDirection === 'left' ? 'slideInLeft 0.3s ease-out' : 'none'
+                }}
+              >
+                <img
+                  src={currentImage.src}
+                  alt={currentImage.alt}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+              </div>
+
+              {/* Bottom vignette */}
+              <div className="absolute top-0 left-0 right-0 h-18 bg-gradient-to-b from-black/30 to-transparent z-[1]" />
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent z-[1]" />
+
+              {/* Text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white z-[2]">
+                <p className="text-[#F5F5F5] text-lg md:text-2xl leading-relaxed unbounded">
+                  {currentImage.alt}
                 </p>
-                <p className="text-[#F5F5F5] text-sm leading-relaxed font-light">
-                  {img.location}
+                <p className="text-[#F5F5F5] text-xs md:text-sm leading-relaxed font-light">
+                  {currentImage.location}
                 </p>
               </div>
             </div>
           </div>
-        ))}
-        
-        {/* Gallery card */}
-        <div
-          onClick={() => openModal(0)}
-          className="bg-gradient-to-b from-[#000000] to-[#111111] rounded-2xl border-[2px] border-[#222222] text-gray-800 hover:shadow-xl transition-all duration-200 p-3 flex flex-col items-center justify-center cursor-target min-h-[300px]"
-        >
-          <div className="flex flex-col justify-center items-center rounded-2xl  border-2 border-dashed border-[#222222] w-full h-full">
-            <svg width="121" height="121" viewBox="0 0 121 121" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M110.25 66.94C110.25 85.79 110.25 95.22 104.39 101.08C98.53 106.94 89.105 106.94 70.25 106.94H50.25C31.395 106.94 21.965 106.94 16.11 101.08C10.255 95.22 10.25 85.795 10.25 66.94C10.25 48.085 10.25 38.65 16.11 32.795C21.97 26.94 31.395 26.94 50.25 26.94H70.25C89.105 26.94 98.535 26.94 104.39 32.795C107.71 36.115 109.15 40.575 109.77 47.25" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
-              <path d="M20.1899 29.75C20.7499 25.095 21.9249 21.88 24.3749 19.435C29.0749 14.75 36.6449 14.75 51.7849 14.75H67.8399C82.9799 14.75 90.5449 14.75 95.2499 19.435C97.6999 21.88 98.8749 25.095 99.4349 29.75" stroke="#F5F5F5" stroke-width="3"/>
-              <path d="M87.75 56.94C91.8921 56.94 95.25 53.5821 95.25 49.44C95.25 45.2979 91.8921 41.94 87.75 41.94C83.6079 41.94 80.25 45.2979 80.25 49.44C80.25 53.5821 83.6079 56.94 87.75 56.94Z" stroke="#F5F5F5" stroke-width="3"/>
-              <path d="M10.25 69.44L19.01 61.775C21.2057 59.8553 24.0487 58.8417 26.9636 58.9391C29.8785 59.0366 32.6475 60.238 34.71 62.3L56.16 83.75C57.8252 85.4134 60.0237 86.4362 62.3687 86.6383C64.7136 86.8405 67.0548 86.209 68.98 84.855L70.475 83.805C73.2535 81.8546 76.6115 80.9044 80 81.1096C83.3885 81.3149 86.6072 82.6635 89.13 84.935L105.25 99.435" stroke="#F5F5F5" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-
-            <p className="text-[#F5F5F5] text-xl mt-4 unbounded">
-              View All Photos
-            </p>
-          </div>
         </div>
-      </AnimatedBox>
-
-      {/* Modal for detailed view */}
-      {isModalOpen && (
-        <div className="fixed inset-0 backdrop-blur-xs bg-black/30 flex items-center justify-center z-50 p-4 md:p-8" onClick={closeModal}>
-        <div className="relative w-full max-w-4xl h-[80vh] md:h-[70vh]" onClick={(e) => e.stopPropagation()}>
-          {/* Close button */}
-      <button 
-        className="cursor-target absolute top-4 md:top-6 right-4 md:right-6 text-white text-3xl backdrop-blur-xs bg-black/20 rounded-full w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
-        onClick={closeModal}
-      >
-      &times;
-    </button>
-    
-    {/* Navigation buttons */}
-    <button 
-      className="rounded-full cursor-target absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-white text-2xl backdrop-blur-xs bg-black/20 w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
-      onClick={() => navigateImage('prev')}
-    >
-      <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1.93051 4.95007H12.4348C12.5847 4.95007 12.7285 5.00801 12.8345 5.11114C12.9405 5.21427 13 5.35415 13 5.5C13 5.64585 12.9405 5.78573 12.8345 5.88886C12.7285 5.99199 12.5847 6.04993 12.4348 6.04993H1.93051L6.05289 10.06C6.15901 10.1633 6.21863 10.3033 6.21863 10.4494C6.21863 10.5954 6.15901 10.7355 6.05289 10.8387C5.94676 10.942 5.80283 11 5.65275 11C5.50266 11 5.35873 10.942 5.2526 10.8387L0.166041 5.88935C0.113409 5.83827 0.0716505 5.77758 0.0431585 5.71077C0.0146666 5.64396 9.53674e-07 5.57233 9.53674e-07 5.5C9.53674e-07 5.42767 0.0146666 5.35604 0.0431585 5.28923C0.0716505 5.22242 0.113409 5.16173 0.166041 5.11065L5.2526 0.161274C5.35873 0.058012 5.50266 0 5.65275 0C5.80283 0 5.94676 0.058012 6.05289 0.161274C6.15901 0.264537 6.21863 0.40459 6.21863 0.550625C6.21863 0.69666 6.15901 0.836714 6.05289 0.939976L1.93051 4.95007Z" fill="white"/>
-      </svg>
-    </button>
-    <button 
-      className="rounded-full cursor-target absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-white text-2xl backdrop-blur-xs bg-black/20 w-7 h-7 md:w-10 md:h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors z-10"
-      onClick={() => navigateImage('next')}
-    >
-      <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.0695 4.95007H0.565174C0.41528 4.95007 0.271526 5.00801 0.165536 5.11114C0.059545 5.21427 0 5.35415 0 5.5C0 5.64585 0.059545 5.78573 0.165536 5.88886C0.271526 5.99199 0.41528 6.04993 0.565174 6.04993H11.0695L6.94711 10.06C6.84099 10.1633 6.78137 10.3033 6.78137 10.4494C6.78137 10.5954 6.84099 10.7355 6.94711 10.8387C7.05324 10.942 7.19717 11 7.34726 11C7.49734 11 7.64127 10.942 7.7474 10.8387L12.834 5.88935C12.8866 5.83827 12.9284 5.77758 12.9568 5.71077C12.9853 5.64396 13 5.57233 13 5.5C13 5.42767 12.9853 5.35604 12.9568 5.28923C12.9284 5.22242 12.8866 5.16173 12.834 5.11065L7.7474 0.161274C7.64127 0.058012 7.49734 0 7.34726 0C7.19717 0 7.05324 0.058012 6.94711 0.161274C6.84099 0.264537 6.78137 0.40459 6.78137 0.550625C6.78137 0.69666 6.84099 0.836714 6.94711 0.939976L11.0695 4.95007Z" fill="white"/>
-      </svg>
-    </button>
-
-    <p className="absolute left-4 md:left-6 top-6 md:top-8 transform -translate-y-1/2  text-[#F5F5F5] text-xs leading-relaxed font-light z-10">
-          {"#"}{(activeIndex !== null ? activeIndex : 0) + 1} of {images.length}
-        </p>
-    
-    {/* Image as background with text overlay */}
-    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black flex items-center justify-center">
-  <div className="relative w-full h-full">
-    <img
-      src={activeIndex !== null ? images[activeIndex].src : images[0].src}
-      alt={activeIndex !== null ? images[activeIndex].alt : images[0].alt}
-      className="absolute inset-0 w-full h-full object-cover object-center"
-    />
-  </div>
-
-  {/* Bottom vignette */}
-  <div className="absolute top-0 left-0 right-0 h-18 bg-gradient-to-b from-black/30 to-transparent z-[1]" />
-  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent z-[1]" />
-
-  {/* Text overlay */}
-  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white z-[2]">
-    <p className="text-[#F5F5F5] text-lg md:text-2xl leading-relaxed unbounded">
-      {activeIndex !== null ? images[activeIndex].alt : images[0].alt}
-    </p>
-    <p className="text-[#F5F5F5] text-xs md:text-sm leading-relaxed font-light">
-      {activeIndex !== null ? images[activeIndex].location : images[0].location}
-    </p>
-  </div>
-</div>
-
-  </div>
-</div>
       )}
     </div>
   );
 };
 
 export default Slideshow;
-
 
 
 
